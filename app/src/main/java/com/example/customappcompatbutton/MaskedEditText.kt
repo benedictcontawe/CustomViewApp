@@ -1,7 +1,13 @@
 package com.example.customappcompatbutton
 
 import android.content.Context
+import android.content.res.ColorStateList
+import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 
 class MaskedEditText : CustomEditText {
 
@@ -25,8 +31,35 @@ class MaskedEditText : CustomEditText {
         mMasked = masked
         mUnmaskedText = text.toString()
 
+        if (text!!.isNotEmpty()){
+            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
+                ViewCompat.setBackgroundTintList(this@MaskedEditText, ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.blue)))
+                setUpperHintColor(getTextInputLayout(),this@MaskedEditText)
+            }
+        }
+
         if(masked) {
-            setText(TextMaskHelper.maskText(text.toString(), 3))
+            setText(TextMaskFormatter.maskText(text.toString(), 3))
+        } else {
+            setText(text)
+        }
+    }
+
+    fun setText(masked: Boolean, maskedCharacter : Char, maskedCharacterQuantity : Int, text: CharSequence?) {
+        mMasked = masked
+        mUnmaskedText = text.toString()
+
+        if (text!!.isNotEmpty()){
+            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
+                ViewCompat.setBackgroundTintList(this@MaskedEditText, ColorStateList.valueOf(
+                    ContextCompat.getColor(context, R.color.blue)))
+                setUpperHintColor(getTextInputLayout(),this@MaskedEditText)
+            }
+        }
+
+        if(masked) {
+            setText(TextMaskFormatter.maskText(text.toString(), 3))
         } else {
             setText(text)
         }

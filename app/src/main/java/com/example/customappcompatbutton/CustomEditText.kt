@@ -19,6 +19,8 @@ import java.util.concurrent.TimeUnit
 
 open class CustomEditText : TextInputEditText {
 
+    protected var mTextInputLayout: TextInputLayout? = null
+
     constructor(context: Context?) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         initAttrs(context, attrs)
@@ -73,6 +75,7 @@ open class CustomEditText : TextInputEditText {
 
     fun setTextInputLayout(textInputLayout: TextInputLayout, useSelfListener : Boolean = true) {
         Log.e("setTextInputLayout","${this.isEnabled} ${this.text}")
+        mTextInputLayout = textInputLayout
         when(this.isEnabled) {
             true -> {
                 setUpperHintColorFocusBlue(textInputLayout)
@@ -82,6 +85,10 @@ open class CustomEditText : TextInputEditText {
                 setUpperHintColorFocusGray(textInputLayout)
             }
         }
+    }
+
+    fun getTextInputLayout() : TextInputLayout{
+        return mTextInputLayout!!
     }
 
     fun setListener(textInputLayout: TextInputLayout,enterFocus: ()-> Unit,leaveFocus: ()-> Unit){

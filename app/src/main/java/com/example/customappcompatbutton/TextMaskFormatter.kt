@@ -1,6 +1,6 @@
 package com.example.customappcompatbutton
 
-class TextMaskHelper() {
+class TextMaskFormatter() {
 
     companion object {
 
