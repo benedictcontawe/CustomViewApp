@@ -59,7 +59,7 @@
                     android:nextFocusUp="@id/customEditText"
                     android:nextFocusLeft="@null"
                     android:nextFocusRight="@null"
-                    android:nextFocusDown="@null"
+                    android:nextFocusDown="@id/amountEditText"
                     app:drawableStartCompat="@drawable/ic_key_black"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -82,8 +82,31 @@
                     android:nextFocusUp="@id/maskedEditText"
                     android:nextFocusLeft="@null"
                     android:nextFocusRight="@null"
-                    android:nextFocusDown="@null"
+                    android:nextFocusDown="@id/calendarDateEditText"
                     app:drawableStartCompat="@drawable/ic_key_black"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CalendarDateEditText">
+
+            <com.example.customappcompatbutton.CustomView.CalendarDateEditText
+                android:id="@+id/calendarDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                tools:text="CalendarDateEditText"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1"
+                android:nextFocusUp="@id/amountEditText"
+                android:nextFocusLeft="@null"
+                android:nextFocusRight="@null"
+                android:nextFocusDown="@null"
+                app:drawableStartCompat="@drawable/ic_key_black"
+                />
 
         </android.support.design.widget.TextInputLayout>
 

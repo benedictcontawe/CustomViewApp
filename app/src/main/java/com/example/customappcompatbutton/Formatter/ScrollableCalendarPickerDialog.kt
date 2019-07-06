@@ -10,37 +10,33 @@ import java.util.*
 
 class ScrollableCalendarPickerDialog {
 
-    lateinit var context : Context
-    lateinit var customEditText : CustomEditText
+    companion object{
+        fun showCalendar(context : Context) : String{
+            var stringToBeReturn : String? = null
+            val currentDate: Calendar = Calendar.getInstance()
+            val datePickerDialog = DatePickerDialog(context, /*android.R.style.Theme_Holo_Light_Panel*/
+                AlertDialog.THEME_HOLO_LIGHT, DatePickerDialog.OnDateSetListener { datePicker, setYear, setMonth, setDay ->
+                    var setmonth = setMonth
+                    setmonth += 1
 
-    constructor(context : Context, customEditText : CustomEditText){
-        this.context = context
-        this.customEditText = customEditText
-    }
+                    val datetoformat = setmonth.toString() + " " + setDay.toString() + ", " + setYear.toString()
 
-    fun showCalendar(){
-        val currentDate: Calendar = Calendar.getInstance()
-        val datePickerDialog = DatePickerDialog(context, /*android.R.style.Theme_Holo_Light_Panel*/
-            AlertDialog.THEME_HOLO_LIGHT, DatePickerDialog.OnDateSetListener { datePicker, setYear, setMonth, setDay ->
-                var setmonth = setMonth
-                setmonth += 1
+                    val apiFormat = SimpleDateFormat("MMM/dd/yyyy")
+                    val format = SimpleDateFormat("M d, yyyy")
+                    val displayFormat = SimpleDateFormat("MMM dd, yyyy")
+                    try {
+                        var date = format.parse(datetoformat)
+                        stringToBeReturn = displayFormat.format(date)
+                    } catch (e: ParseException) {
+                        e.printStackTrace()
+                    }
 
-                val datetoformat = setmonth.toString() + " " + setDay.toString() + ", " + setYear.toString()
+                }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DAY_OF_MONTH)) //TODO: <- this (convert into mmmm)
 
-                val apiFormat = SimpleDateFormat("MMM/dd/yyyy")
-                val format = SimpleDateFormat("M d, yyyy")
-                //val displayFormat = SimpleDateFormat("MMM dd, yyyy")
-                try {
-                    var date = format.parse(datetoformat)
-                    //et_reg_per_info_bday.setText(displayFormat.format(date))
-                    customEditText.setText(apiFormat.format(date))
-                } catch (e: ParseException) {
-                    e.printStackTrace()
-                }
+            datePickerDialog.datePicker.calendarViewShown = false
+            datePickerDialog.show()
 
-            }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DAY_OF_MONTH)) //TODO: <- this (convert into mmmm)
-
-        datePickerDialog.datePicker.calendarViewShown = false
-        datePickerDialog.show()
+            return stringToBeReturn?:""
+        }
     }
 }
