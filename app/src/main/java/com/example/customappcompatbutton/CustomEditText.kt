@@ -1,14 +1,23 @@
 package com.example.customappcompatbutton
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.support.design.widget.TextInputEditText
+import android.support.design.widget.TextInputLayout
+import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewCompat
+import android.support.v7.content.res.AppCompatResources
 import android.util.AttributeSet
-import androidx.appcompat.content.res.AppCompatResources
-import com.google.android.material.textfield.TextInputEditText
+import android.util.Log
+import android.view.View
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 
 
-abstract class CustomEditText : TextInputEditText {
+open class CustomEditText : TextInputEditText {
 
     constructor(context: Context?) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
@@ -62,5 +71,118 @@ abstract class CustomEditText : TextInputEditText {
         }
     }
 
+    fun setTextInputLayout(textInputLayout: TextInputLayout, useSelfListener : Boolean = true) {
+        Log.e("setTextInputLayout","${this.isEnabled} ${this.text}")
+        when(this.isEnabled) {
+            true -> {
+                setUpperHintColorFocusBlue(textInputLayout)
+                if (useSelfListener) this.setListener(textInputLayout, enterFocus = {}, leaveFocus = {})
+            }
+            false -> {
+                setUpperHintColorFocusGray(textInputLayout)
+            }
+        }
+    }
 
+    fun setListener(textInputLayout: TextInputLayout,enterFocus: ()-> Unit,leaveFocus: ()-> Unit){
+        this.onFocusChangeListener = object : OnFocusChangeListener {
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                when(hasFocus) {
+                    true -> {
+                        enterFocus()
+                        Log.e("setListener","hasFocus-true")
+                        Log.e("setListener","text-${this@CustomEditText}")
+
+                    }
+                    false -> {
+                        leaveFocus()
+                        Log.e("setListener","hasFocus-false")
+                        if(this@CustomEditText.text.toString().isNullOrBlank()) {
+                            Log.e("setListener","isNullOrBlank")
+                            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
+                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.gray)))
+                                setUpperHintColor(textInputLayout,this@CustomEditText)
+                            }
+                        }
+                        else{
+                            Log.e("setListener","Not isNullOrBlank")
+                            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
+                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.blue)))
+                                setUpperHintColor(textInputLayout,this@CustomEditText)
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun setUpperHintColor(textInputLayout: TextInputLayout,textInputEditText: TextInputEditText) {
+        try {
+            val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
+            //val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
+            field.isAccessible = true
+            val states = arrayOf(intArrayOf())
+            val colors : Any
+            if(textInputEditText.text!!.isNotEmpty()) {
+                colors = intArrayOf(ContextCompat.getColor(context, R.color.blue))
+            }
+            else{
+                colors = intArrayOf(ContextCompat.getColor(context, R.color.gray))
+            }
+
+            val myList = ColorStateList(states, colors)
+            field.set(textInputLayout, myList)
+
+            val method = textInputLayout.javaClass.getDeclaredMethod("updateLabelState", Boolean::class.javaPrimitiveType)
+            method.isAccessible = true
+            method.invoke(textInputLayout, true)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setUpperHintColorFocusGray(textInputLayout: TextInputLayout){
+        try {
+            //val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
+            val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
+            field.isAccessible = true
+            val states = arrayOf(intArrayOf())
+            val colors : Any
+            colors = intArrayOf(ContextCompat.getColor(context, R.color.gray))
+
+            val myList = ColorStateList(states, colors)
+            field.set(textInputLayout, myList)
+
+            val method = textInputLayout.javaClass.getDeclaredMethod("updateLabelState", Boolean::class.javaPrimitiveType)
+            method.isAccessible = true
+            method.invoke(textInputLayout, true)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setUpperHintColorFocusBlue(textInputLayout: TextInputLayout){
+        try {
+            //val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
+            val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
+            field.isAccessible = true
+            val states = arrayOf(intArrayOf())
+            val colors : Any
+            colors = intArrayOf(ContextCompat.getColor(context, R.color.blue))
+
+            val myList = ColorStateList(states, colors)
+            field.set(textInputLayout, myList)
+
+            val method = textInputLayout.javaClass.getDeclaredMethod("updateLabelState", Boolean::class.javaPrimitiveType)
+            method.isAccessible = true
+            method.invoke(textInputLayout, true)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

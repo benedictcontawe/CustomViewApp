@@ -3,34 +3,89 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayoutCustomEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="[Hint]">
+            android:hint="CustomEditText">
 
             <com.example.customappcompatbutton.CustomEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:text="Hello"
-                android:imeOptions="actionNext"
-                android:inputType="textNoSuggestions"
-                android:maxLines="1"
-                android:nextFocusUp="@null"
-                android:nextFocusLeft="@null"
-                android:nextFocusRight="@null"
-                android:nextFocusDown="@null"
-                app:drawableStartCompat="@drawable/ic_launcher_foreground">
+                    android:id="@+id/customEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    tools:text="CustomEditText"
+                    android:imeOptions="actionNext"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:nextFocusUp="@null"
+                    android:nextFocusLeft="@null"
+                    android:nextFocusRight="@null"
+                    android:nextFocusDown="@id/maskedEditText"
+                    app:drawableStartCompat="@drawable/ic_person_black">
 
             </com.example.customappcompatbutton.CustomEditText>
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutMaskedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="MaskedEditText">
+
+            <com.example.customappcompatbutton.MaskedEditText
+                    android:id="@+id/maskedEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    tools:text="MaskedEditText"
+                    android:imeOptions="actionNext"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:nextFocusUp="@id/customEditText"
+                    android:nextFocusLeft="@null"
+                    android:nextFocusRight="@null"
+                    android:nextFocusDown="@null"
+                    app:drawableStartCompat="@drawable/ic_key_black"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayoutAmountEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="AmountEditText">
+
+            <com.example.customappcompatbutton.AmountEditText
+                    android:id="@+id/amountEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    tools:text="AmountEditText"
+                    android:imeOptions="actionNext"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:nextFocusUp="@id/maskedEditText"
+                    android:nextFocusLeft="@null"
+                    android:nextFocusRight="@null"
+                    android:nextFocusDown="@null"
+                    app:drawableStartCompat="@drawable/ic_key_black"/>
+
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 
