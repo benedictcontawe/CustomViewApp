@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customappcompatbutton.CustomView
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -12,6 +12,7 @@ import android.support.v7.content.res.AppCompatResources
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import com.example.customappcompatbutton.R
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
@@ -35,7 +36,9 @@ open class CustomEditText : TextInputEditText {
 
     fun initAttrs(context: Context, attrs: AttributeSet?) {
         if (attrs != null) {
-            val attributeArray = context.obtainStyledAttributes(attrs,R.styleable.CustomTextView)
+            val attributeArray = context.obtainStyledAttributes(attrs,
+                R.styleable.CustomTextView
+            )
 
             var drawableStart: Drawable? = null
             var drawableEnd: Drawable? = null
@@ -107,14 +110,18 @@ open class CustomEditText : TextInputEditText {
                         if(this@CustomEditText.text.toString().isNullOrBlank()) {
                             Log.e("setListener","isNullOrBlank")
                             Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
-                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.gray)))
+                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context,
+                                    R.color.gray
+                                )))
                                 setUpperHintColor(textInputLayout,this@CustomEditText)
                             }
                         }
                         else{
                             Log.e("setListener","Not isNullOrBlank")
                             Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
-                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context, R.color.blue)))
+                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context,
+                                    R.color.blue
+                                )))
                                 setUpperHintColor(textInputLayout,this@CustomEditText)
                             }
 

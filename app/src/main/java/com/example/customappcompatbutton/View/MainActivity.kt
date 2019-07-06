@@ -1,8 +1,9 @@
-package com.example.customappcompatbutton
+package com.example.customappcompatbutton.View
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import com.example.customappcompatbutton.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,5 +23,7 @@ class MainActivity : AppCompatActivity() {
         Log.e(MainActivity::class.java.simpleName,maskedEditText.getUnmaskedText())
 
         amountEditText.setTextInputLayout(textInputLayoutAmountEditText)
+        amountEditText.setTextInputLayout(textInputLayoutAmountEditText,false)
+        amountEditText.setTextChangeEvent(amountEditText, "PHP")
     }
 }

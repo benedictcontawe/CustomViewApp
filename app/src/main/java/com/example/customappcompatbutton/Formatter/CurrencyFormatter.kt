@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customappcompatbutton.Formatter
 
 import java.math.BigDecimal
 import java.text.NumberFormat
@@ -37,22 +37,33 @@ class CurrencyFormatter {
         }
 
         fun formatCurrencyCodePhP(string: String?, capitalize : Boolean) : String{
-            return if(capitalize) "PHP ${formatCurrency(string)}" else "PHP ${formatCurrency(string)}"
+            return if(capitalize) "PHP ${formatCurrency(
+                string
+            )}" else "PHP ${formatCurrency(
+                string
+            )}"
         }
 
         fun formatCurrencyCode(amount: Double?, currency: String?) : String {
-            return "$currency ${formatCurrency(amount)}"
+            return "$currency ${formatCurrency(
+                amount
+            )}"
         }
 
         fun formatCurrencyCode(amount: String?, currency: String?) : String {
             //return "$currency ${formatCurrency(amount?.replace(",",""))}"
             //return "$currency ${formatCurrency(amount?.replace("[^A-Za-z0-9]".toRegex(),""))}"
-            return formatCurrencyCode(amount?.toDouble(), currency)
+            return formatCurrencyCode(
+                amount?.toDouble(),
+                currency
+            )
         }
 
         fun formatAmount(amount: String?, currency: String?) : String {
             //return "$currency ${formatCurrency(amount?.replace(",",""))}"
-            return "$currency ${formatCurrency(amount?.replace(",",""))}"
+            return "$currency ${formatCurrency(
+                amount?.replace(",", "")
+            )}"
             //return formatCurrencyCode(amount?.toDouble(), currency)
         }
 

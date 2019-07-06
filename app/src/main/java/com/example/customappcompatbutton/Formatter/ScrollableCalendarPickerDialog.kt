@@ -1,8 +1,9 @@
-package com.example.customappcompatbutton
+package com.example.customappcompatbutton.Formatter
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
+import com.example.customappcompatbutton.CustomView.CustomEditText
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -13,7 +14,8 @@ class ScrollableCalendarPickerDialog {
     lateinit var customEditText : CustomEditText
 
     constructor(context : Context, customEditText : CustomEditText){
-        this.context = context;
+        this.context = context
+        this.customEditText = customEditText
     }
 
     fun showCalendar(){

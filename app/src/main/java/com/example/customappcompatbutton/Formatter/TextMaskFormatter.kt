@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customappcompatbutton.Formatter
 
 class TextMaskFormatter() {
 
