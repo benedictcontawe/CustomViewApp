@@ -19,19 +19,18 @@ class MainActivity : AppCompatActivity() {
     private fun configureCustomEditText() {
         customEditText.setTextInputLayout(textInputLayoutCustomEditText)
 
+        //TODO: Update Masked Edit Text with parameter characterMasked : String characterQuantity : Int
         maskedEditText.setTextInputLayout(textInputLayoutMaskedEditText)
         maskedEditText.setText(true,"MaskedEditText")
         Log.e(MainActivity::class.java.simpleName,maskedEditText.getUnmaskedText())
 
+        //TODO: Finish Amount with Custom Numeric Keypad
         amountEditText.setTextInputLayout(textInputLayoutAmountEditText,false)
         amountEditText.setTextChangeEvent(amountEditText, "PHP")
 
-        calendarDateEditText.setTextInputLayout(textInputLayoutAmountEditText)
-        calendarDateEditText.setListener(this,
-            getText = {
-                Toast.makeText(this,"Hello",Toast.LENGTH_SHORT).show()
-            }
-        )
+        calendarDateEditText.setTextInputLayout(textInputLayoutCalendarDateEditText,false)
+        calendarDateEditText.setListener(this,calendarDateEditText)
 
+        //TODO: Finish Contact Edit Text
     }
 }

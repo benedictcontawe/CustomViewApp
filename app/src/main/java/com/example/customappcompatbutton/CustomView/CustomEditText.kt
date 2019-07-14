@@ -22,11 +22,11 @@ open class CustomEditText : TextInputEditText {
 
     protected var mTextInputLayout: TextInputLayout? = null
 
-    constructor(context: Context?) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+    constructor(context : Context?) : super(context)
+    constructor(context : Context, attrs: AttributeSet?) : super(context, attrs) {
         initAttrs(context, attrs)
     }
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context : Context, attrs : AttributeSet?, defStyleAttr : Int) : super(context, attrs, defStyleAttr) {
         initAttrs(context, attrs)
     }
 
@@ -34,7 +34,7 @@ open class CustomEditText : TextInputEditText {
 
     }
 
-    fun initAttrs(context: Context, attrs: AttributeSet?) {
+    fun initAttrs(context : Context, attrs: AttributeSet?) {
         if (attrs != null) {
             val attributeArray = context.obtainStyledAttributes(attrs,
                 R.styleable.CustomTextView
@@ -76,7 +76,7 @@ open class CustomEditText : TextInputEditText {
         }
     }
 
-    fun setTextInputLayout(textInputLayout: TextInputLayout, useSelfListener : Boolean = true) {
+    fun setTextInputLayout(textInputLayout : TextInputLayout, useSelfListener : Boolean = true) {
         Log.e("setTextInputLayout","${this.isEnabled} ${this.text}")
         mTextInputLayout = textInputLayout
         when(this.isEnabled) {
@@ -94,7 +94,7 @@ open class CustomEditText : TextInputEditText {
         return mTextInputLayout!!
     }
 
-    fun setListener(textInputLayout: TextInputLayout,enterFocus: ()-> Unit,leaveFocus: ()-> Unit){
+    fun setListener(textInputLayout : TextInputLayout,enterFocus: ()-> Unit,leaveFocus : ()-> Unit){
         this.onFocusChangeListener = object : OnFocusChangeListener {
             override fun onFocusChange(v: View?, hasFocus: Boolean) {
                 when(hasFocus) {
@@ -132,7 +132,7 @@ open class CustomEditText : TextInputEditText {
         }
     }
 
-    fun setUpperHintColor(textInputLayout: TextInputLayout,textInputEditText: TextInputEditText) {
+    fun setUpperHintColor(textInputLayout : TextInputLayout,textInputEditText : TextInputEditText) {
         try {
             val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
             //val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
@@ -158,7 +158,7 @@ open class CustomEditText : TextInputEditText {
         }
     }
 
-    private fun setUpperHintColorFocusGray(textInputLayout: TextInputLayout){
+    private fun setUpperHintColorFocusGray(textInputLayout : TextInputLayout){
         try {
             //val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
             val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
@@ -179,7 +179,7 @@ open class CustomEditText : TextInputEditText {
         }
     }
 
-    private fun setUpperHintColorFocusBlue(textInputLayout: TextInputLayout){
+    private fun setUpperHintColorFocusBlue(textInputLayout : TextInputLayout){
         try {
             //val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
             val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")

@@ -24,7 +24,7 @@ class AmountEditText : CustomEditText {
         return text
     }
 
-    fun setTextChangeEvent(amountEditText: AmountEditText, currency: String) {
+    fun setTextChangeEvent(amountEditText : AmountEditText, currency : String) {
         this.setListener(this.getTextInputLayout(),
             enterFocus = {
                 amountEditText.setText(getAmountText(currency))

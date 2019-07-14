@@ -88,9 +88,10 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CalendarDateEditText">
+                android:id="@+id/textInputLayoutCalendarDateEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CalendarDateEditText">
 
             <com.example.customappcompatbutton.CustomView.CalendarDateEditText
                 android:id="@+id/calendarDateEditText"
@@ -99,7 +100,7 @@
                 android:drawablePadding="10dp"
                 tools:text="CalendarDateEditText"
                 android:imeOptions="actionNext"
-                android:inputType="textNoSuggestions"
+                android:inputType="none"
                 android:maxLines="1"
                 android:nextFocusUp="@id/amountEditText"
                 android:nextFocusLeft="@null"
