@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
         calendarDateEditText.setTextInputLayout(textInputLayoutCalendarDateEditText,false)
         calendarDateEditText.setListener(this,calendarDateEditText)
 
-        //TODO: Finish Contact Edit Text
         contactEditText.setTextInputLayout(textInputLayoutContactEditText, false)
         contactEditText.setListener(contactEditText,
             showContacts = {
