@@ -1,9 +1,15 @@
 package com.example.customappcompatbutton.View
 
+import android.app.Activity
+import android.content.Intent
+import android.database.Cursor
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.example.customappcompatbutton.Formatter.MobileFormatter
 import com.example.customappcompatbutton.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -32,5 +38,46 @@ class MainActivity : AppCompatActivity() {
         calendarDateEditText.setListener(this,calendarDateEditText)
 
         //TODO: Finish Contact Edit Text
+        contactEditText.setTextInputLayout(textInputLayoutContactEditText, false)
+        contactEditText.setListener(contactEditText,
+            showContacts = {
+                val contactPickerIntent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
+                ActivityCompat.startActivityForResult(this, contactPickerIntent, 0, null)
+            },
+            onError = {
+                Log.e(MainActivity::class.java.simpleName,it)
+            })
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode === Activity.RESULT_OK) {
+
+            when (requestCode) {
+                0 -> {
+                    var cursor: Cursor? = null
+                    try {
+                        var phoneNo: String? = null
+                        val name: String? = null
+                        val uri = data?.getData()
+                        cursor = contentResolver.query(uri, null, null, null, null)
+                        cursor?.moveToFirst()
+                        val phoneIndex = cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                        phoneNo = cursor?.getString(phoneIndex)
+                        contactEditText.setText(MobileFormatter.formatContact(phoneNo))
+                        contactEditText.setSelection(contactEditText.length())
+                        Log.e("onActivityResult Enroll", "${phoneNo}")
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                        Log.e("Error Exception", e.message)
+                    }
+
+                }
+            }
+        } else {
+            Log.e("onActivityResult", "Failed to pick contact")
+        }
     }
 }

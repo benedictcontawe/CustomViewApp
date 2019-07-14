@@ -23,7 +23,7 @@ class CalendarDateEditText : CustomEditText {
             showScrollableCalendar(context, calendarDateEditText)
         }
 
-        this.setOnFocusChangeListener{
+        this.setOnFocusChangeListener {
                 view: View, hasFocus: Boolean ->
             if (hasFocus){
                 showScrollableCalendar(context, calendarDateEditText)
