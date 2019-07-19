@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 
-class CustomButton : AppCompatButton {
+class  CustomButton : AppCompatButton {
 
     constructor(context : Context?) : super(context)
 
