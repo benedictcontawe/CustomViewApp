@@ -5,39 +5,39 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_00"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.01" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_vertical_05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.05" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.18" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_vertical_20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.20" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_vertical_95"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,8 +81,8 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Search"
-                    android:textColor="@color/text_white"
+                    tools:text="Search"
+                    android:textColor="#FFF"
                     android:textSize="@dimen/text_Title"
                     android:layout_marginBottom="@dimen/margin_start_end_half"/>
 
@@ -90,8 +90,8 @@
                     android:id="@+id/tv_calendar_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[Start Date]/[End Date]"
-                    android:textColor="@color/text_white"
+                    tools:text="[Start Date]/[End Date]"
+                    android:textColor="#FFF"
                     android:textSize="@dimen/text_size_small"/>
 
         </LinearLayout>
@@ -125,26 +125,13 @@
         <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@color/colorWhite"
+                android:background="#FFF"
                 app:layout_constraintTop_toBottomOf="@id/LinearLayoutDivider"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-            <pl.rafman.scrollcalendar.ScrollCalendar
-                    android:visibility="gone"
-                    android:id="@+id/sc_custom_calendar_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:adapter="range"
-                    app:showYearAlways="true"
-                    app:currentDayStyle="@style/MyCurrentDayStyle"
-                    app:selectedItemStyle="@style/MySelectedItemStyle"
-                    app:selectedBeginningItemStyle="@style/MySelectedItemBeginningStyle"
-                    app:selectedMiddleItemStyle="@style/MySelectedItemMiddleStyle"
-                    app:selectedEndItemStyle="@style/MySelectedItemEndStyle"/>
-
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                     android:visibility="visible"
                     android:id="@+id/rv_calendar"
                     android:layout_width="match_parent"
@@ -153,6 +140,14 @@
 
         </FrameLayout>
 
+        <View
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:background="@drawable/horizontal_bottom_gradient_black_to_transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    
         <Button
                 android:id="@+id/btn_proceed"
                 android:layout_width="0dp"
@@ -160,22 +155,13 @@
                 android:layout_marginBottom="@dimen/marginBtnBottom"
                 android:layout_marginEnd="@dimen/marginBtn"
                 android:layout_marginStart="@dimen/marginBtn"
-                android:background="@drawable/rounded_btn2"
                 android:text="Proceed"
                 android:visibility="visible"
-                android:textColor="@color/colorWhite"
+                android:textColor="#FFF"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
         />
 
-        <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="150dp"
-                android:background="@drawable/horizontal_bottom_gradient_black_to_transparent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
