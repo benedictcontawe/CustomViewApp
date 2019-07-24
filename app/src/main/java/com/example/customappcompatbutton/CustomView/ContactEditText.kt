@@ -18,6 +18,10 @@ class ContactEditText : CustomEditText {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
+    companion object{
+        val code = 0
+    }
+
     fun setListener(contactEditText : ContactEditText, showContacts: ()-> Unit, onError: (message : String)-> Unit){
         this.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(view : View, motionEvent : MotionEvent): Boolean {

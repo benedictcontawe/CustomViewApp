@@ -3,7 +3,10 @@ package com.example.customappcompatbutton.CustomView
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
+import android.view.KeyEvent
 import android.view.View
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -17,7 +20,7 @@ class CalendarDateEditText : CustomEditText {
 
 
     fun setListener(context : Context,calendarDateEditText : CalendarDateEditText){
-        this.isFocusable = false
+        //this.isFocusable = false
 
         this.setOnClickListener {
             showScrollableCalendar(context, calendarDateEditText)
@@ -29,6 +32,33 @@ class CalendarDateEditText : CustomEditText {
                 showScrollableCalendar(context, calendarDateEditText)
             }
         }
+
+        /*this.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })*/
+
+        this.setOnKeyListener(object : OnKeyListener{
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                return  when(keyCode){
+                    KeyEvent.KEYCODE_ENTER -> {
+                        true
+                    }
+                    else -> {
+                        true
+                    }
+                }
+            }
+        })
     }
 
     private fun showScrollableCalendar(context : Context,calendarDateEditText : CalendarDateEditText) {
