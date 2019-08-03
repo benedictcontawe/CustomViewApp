@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                         phoneNo = cursor?.getString(phoneIndex)
                         contactEditText.setText(MobileFormatter.formatContact(phoneNo))
                         contactEditText.setSelection(contactEditText.length())
+                        contactEditText.setUpperHintColor(contactEditText.getTextInputLayout(), contactEditText)
                         Log.e("onActivityResult Enroll", "${phoneNo}")
                     } catch (e: Exception) {
                         e.printStackTrace()
