@@ -25,7 +25,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    /* Old Library
+    /* Old Libraries
     //Android UI Layout Library and backward-compatible Library(Legacy)
     implementation 'com.android.support:design:26.1.0'//implementation 'com.google.android.material:material:1.1.0-alpha07'
     implementation 'com.android.support:support-v7:28.0.0'//implementation 'androidx.legacy:legacy-support-v13:1.0.0'

@@ -6,6 +6,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.View
+import com.google.android.material.textfield.TextInputLayout
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,13 +18,20 @@ class CalendarDateEditText : CustomEditText {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
 
-    fun setListener(context : Context,calendarDateEditText : CalendarDateEditText){
+    fun setListener(context : Context, textInputLayout : TextInputLayout, calendarDateEditText : CalendarDateEditText){
         //this.isFocusable = false
+        this.setListener(textInputLayout,
+            enterFocus = {
+                showScrollableCalendar(context, calendarDateEditText)
+            }, leaveFocus = {
+
+            }
+        )
 
         this.setOnClickListener {
             showScrollableCalendar(context, calendarDateEditText)
         }
-
+        /*
         this.setOnFocusChangeListener {
                 view: View, hasFocus: Boolean ->
             if (hasFocus){
@@ -31,7 +39,7 @@ class CalendarDateEditText : CustomEditText {
             }
         }
 
-        /*this.addTextChangedListener(object : TextWatcher{
+        this.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -43,8 +51,8 @@ class CalendarDateEditText : CustomEditText {
             override fun afterTextChanged(s: Editable?) {
 
             }
-        })*/
-
+        })
+        */
         this.setOnKeyListener(object : OnKeyListener{
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
                 return  when(keyCode){

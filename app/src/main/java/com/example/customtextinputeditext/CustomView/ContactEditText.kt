@@ -16,6 +16,7 @@ class ContactEditText : CustomEditText {
     }
 
     fun setListener(contactEditText : ContactEditText, showContacts: ()-> Unit, onError: (message : String)-> Unit){
+
         this.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(view : View, motionEvent : MotionEvent): Boolean {
                 val DRAWABLE_TOP : Int = 1

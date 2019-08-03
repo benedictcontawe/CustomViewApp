@@ -102,7 +102,6 @@ open class CustomEditText : TextInputEditText {
                         enterFocus()
                         Log.e("setListener","hasFocus-true")
                         Log.e("setListener","text-${this@CustomEditText}")
-
                     }
                     false -> {
                         leaveFocus()

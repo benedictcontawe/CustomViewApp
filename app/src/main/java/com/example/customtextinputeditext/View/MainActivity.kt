@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
         amountEditText.setTextChangeEvent(amountEditText, "PHP")
 
         calendarDateEditText.setTextInputLayout(textInputLayoutCalendarDateEditText,false)
-        calendarDateEditText.setListener(this,calendarDateEditText)
+        calendarDateEditText.setListener(this,textInputLayoutCalendarDateEditText,calendarDateEditText)
 
-        contactEditText.setTextInputLayout(textInputLayoutContactEditText, false)
+        contactEditText.setTextInputLayout(textInputLayoutContactEditText, true)
         contactEditText.setListener(contactEditText,
             showContacts = {
                 val contactPickerIntent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
