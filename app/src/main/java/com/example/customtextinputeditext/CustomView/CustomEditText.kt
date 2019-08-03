@@ -1,18 +1,18 @@
-package com.example.customappcompatbutton.CustomView
+package com.example.customtextinputeditext.CustomView
 
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.os.Build
-import android.support.design.widget.TextInputEditText
-import android.support.design.widget.TextInputLayout
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat
-import android.support.v7.content.res.AppCompatResources
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import com.example.customappcompatbutton.R
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import com.example.customtextinputeditext.R
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
@@ -109,18 +109,20 @@ open class CustomEditText : TextInputEditText {
                         Log.e("setListener","hasFocus-false")
                         if(this@CustomEditText.text.toString().isNullOrBlank()) {
                             Log.e("setListener","isNullOrBlank")
-                            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
-                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context,
-                                    R.color.gray
+                            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread())
+                                .subscribe {
+                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(
+                                    ContextCompat.getColor(context, R.color.gray
                                 )))
                                 setUpperHintColor(textInputLayout,this@CustomEditText)
                             }
                         }
                         else{
                             Log.e("setListener","Not isNullOrBlank")
-                            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
-                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(ContextCompat.getColor(context,
-                                    R.color.blue
+                            Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread())
+                                .subscribe {
+                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(
+                                    ContextCompat.getColor(context, R.color.blue
                                 )))
                                 setUpperHintColor(textInputLayout,this@CustomEditText)
                             }
@@ -134,8 +136,8 @@ open class CustomEditText : TextInputEditText {
 
     fun setUpperHintColor(textInputLayout : TextInputLayout,textInputEditText : TextInputEditText) {
         try {
-            val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
-            //val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
+            val field = textInputLayout.javaClass.getDeclaredField("defaultHintTextColor")
+            //val field = textInputLayout.javaClass.getDeclaredField("focusedTextColor")
             field.isAccessible = true
             val states = arrayOf(intArrayOf())
             val colors : Any
@@ -160,8 +162,8 @@ open class CustomEditText : TextInputEditText {
 
     private fun setUpperHintColorFocusGray(textInputLayout : TextInputLayout){
         try {
-            //val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
-            val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
+            //val field = textInputLayout.javaClass.getDeclaredField("defaultHintTextColor")
+            val field = textInputLayout.javaClass.getDeclaredField("focusedTextColor")
             field.isAccessible = true
             val states = arrayOf(intArrayOf())
             val colors : Any
@@ -181,8 +183,8 @@ open class CustomEditText : TextInputEditText {
 
     private fun setUpperHintColorFocusBlue(textInputLayout : TextInputLayout){
         try {
-            //val field = textInputLayout.javaClass.getDeclaredField("mDefaultTextColor")
-            val field = textInputLayout.javaClass.getDeclaredField("mFocusedTextColor")
+            //val field = textInputLayout.javaClass.getDeclaredField("defaultHintTextColor")
+            val field = textInputLayout.javaClass.getDeclaredField("focusedTextColor")
             field.isAccessible = true
             val states = arrayOf(intArrayOf())
             val colors : Any

@@ -1,9 +1,9 @@
-package com.example.customappcompatbutton.CustomView
+package com.example.customtextinputeditext.CustomView
 
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import com.example.customappcompatbutton.Formatter.CurrencyFormatter
+import com.example.customtextinputeditext.Formatter.CurrencyFormatter
 
 class AmountEditText : CustomEditText {
 

@@ -1,12 +1,12 @@
-package com.example.customappcompatbutton.CustomView
+package com.example.customtextinputeditext.CustomView
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
-import com.example.customappcompatbutton.Formatter.TextMaskFormatter
-import com.example.customappcompatbutton.R
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import com.example.customtextinputeditext.Formatter.TextMaskFormatter
+import com.example.customtextinputeditext.R
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit

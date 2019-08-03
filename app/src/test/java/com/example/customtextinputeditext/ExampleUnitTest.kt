@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customtextinputeditext
 
 import org.junit.Test
 

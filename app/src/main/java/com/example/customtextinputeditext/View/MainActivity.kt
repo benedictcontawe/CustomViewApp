@@ -1,17 +1,16 @@
-package com.example.customappcompatbutton.View
+package com.example.customtextinputeditext.View
 
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
 import android.os.Bundle
 import android.provider.ContactsContract
-import android.support.v4.app.ActivityCompat
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.Toast
-import com.example.customappcompatbutton.CustomView.ContactEditText
-import com.example.customappcompatbutton.Formatter.MobileFormatter
-import com.example.customappcompatbutton.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.example.customtextinputeditext.CustomView.ContactEditText
+import com.example.customtextinputeditext.Formatter.MobileFormatter
+import com.example.customtextinputeditext.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         maskedEditText.setText(true,"MaskedEditText")
         Log.e(MainActivity::class.java.simpleName,maskedEditText.getUnmaskedText())
 
-        //TODO: Finish Amount with Custom Numeric Keypad
+        //TODO: Finish Amount with   Custom Numeric Keypad
         amountEditText.setTextInputLayout(textInputLayoutAmountEditText,false)
         amountEditText.setTextChangeEvent(amountEditText, "PHP")
 
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                         var phoneNo: String? = null
                         val name: String? = null
                         val uri = data?.getData()
-                        cursor = contentResolver.query(uri, null, null, null, null)
+                        cursor = contentResolver.query(uri!!, null, null, null, null)
                         cursor?.moveToFirst()
                         val phoneIndex = cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
                         phoneNo = cursor?.getString(phoneIndex)

@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton.Formatter
+package com.example.customtextinputeditext.Formatter
 
 import java.math.BigDecimal
 import java.text.NumberFormat

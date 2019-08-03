@@ -1,10 +1,8 @@
-package com.example.customappcompatbutton.CustomView
+package com.example.customtextinputeditext.CustomView
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.KeyEvent
 import android.view.View

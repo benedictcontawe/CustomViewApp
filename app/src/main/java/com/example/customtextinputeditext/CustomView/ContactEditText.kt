@@ -1,14 +1,7 @@
-package com.example.customappcompatbutton.CustomView
+package com.example.customtextinputeditext.CustomView
 
-import android.Manifest
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import android.provider.ContactsContract
-import android.provider.Settings
-import android.support.v4.app.ActivityCompat.startActivityForResult
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 
