@@ -1,20 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <com.example.customappcompatbutton.CustomButton
-            android:id="@+id/btn_hello"
-            android:layout_width="wrap_content"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <com.example.customview.CustomEditText
+            android:id="@+id/customEditText1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:nextFocusUp="@null"
+            android:nextFocusLeft="@null"
+            android:nextFocusRight="@null"
+            android:nextFocusDown="@id/customEditText2"
+            tools:text="CustomEditText"
+            app:hint="CustomEditText"
+            app:error="Error"/>
 
-</android.support.constraint.ConstraintLayout>
+        <com.example.customview.CustomEditText
+            android:id="@+id/customEditText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:nextFocusUp="@id/customEditText1"
+            android:nextFocusLeft="@null"
+            android:nextFocusRight="@null"
+            android:nextFocusDown="@id/customEditText3"
+            tools:text="CustomEditText"
+            app:hint="CustomEditText"
+            app:error="Error"/>
+
+        <com.example.customview.CustomEditText
+                android:id="@+id/customEditText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1"
+                android:nextFocusUp="@id/customEditText2"
+                android:nextFocusLeft="@null"
+                android:nextFocusRight="@null"
+                android:nextFocusDown="@null"
+                tools:text="CustomEditText"
+                app:hint="CustomEditText"
+                app:error="Error"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>
