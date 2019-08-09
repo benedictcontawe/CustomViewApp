@@ -27,9 +27,9 @@
             android:nextFocusLeft="@null"
             android:nextFocusRight="@null"
             android:nextFocusDown="@id/customEditText2"
-            tools:text="CustomEditText"
             app:hint="CustomEditText"
-            app:error="Error"/>
+            tools:text="CustomEditText"
+            tools:error="Error"/>
 
         <com.example.customview.CustomEditText
             android:id="@+id/customEditText2"
@@ -42,24 +42,24 @@
             android:nextFocusLeft="@null"
             android:nextFocusRight="@null"
             android:nextFocusDown="@id/customEditText3"
-            tools:text="CustomEditText"
             app:hint="CustomEditText"
-            app:error="Error"/>
+            tools:text="CustomEditText"
+            tools:error="Error"/>
 
         <com.example.customview.CustomEditText
-                android:id="@+id/customEditText3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="textNoSuggestions"
-                android:maxLines="1"
-                android:nextFocusUp="@id/customEditText2"
-                android:nextFocusLeft="@null"
-                android:nextFocusRight="@null"
-                android:nextFocusDown="@null"
-                tools:text="CustomEditText"
-                app:hint="CustomEditText"
-                app:error="Error"/>
+            android:id="@+id/customEditText3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:nextFocusUp="@id/customEditText2"
+            android:nextFocusLeft="@null"
+            android:nextFocusRight="@null"
+            android:nextFocusDown="@null"
+            app:hint="CustomEditText"
+            tools:text="CustomEditText"
+            tools:error="Error"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
