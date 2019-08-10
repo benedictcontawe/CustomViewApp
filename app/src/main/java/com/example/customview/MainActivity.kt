@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
-        customEditText2.setListener(
+        customEditText3.setListener(
             onTextChanged = {
                 Log.d(MainActivity::class.java.simpleName,"onTextChanged")
             },
