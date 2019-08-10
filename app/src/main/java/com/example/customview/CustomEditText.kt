@@ -103,8 +103,8 @@ open class CustomEditText : ConstraintLayout {
         Log.d("initView","${hint}-${text}")
         if(TextUtils.isEmpty(text)){
             tv_hint.setVisibility(INVISIBLE)
-            et_text.setHintTextColor(ContextCompat.getColor(context,R.color.text_gray))
-            v_line.setBackgroundColor(ContextCompat.getColor(context,R.color.text_gray))
+            et_text.setHintTextColor(ContextCompat.getColor(context,R.color.gray))
+            v_line.setBackgroundColor(ContextCompat.getColor(context,R.color.gray))
             Log.d("initView","if")
         }
         else {
@@ -158,7 +158,7 @@ open class CustomEditText : ConstraintLayout {
     //endregion
     //region Normal Method
     open fun clearErrors() {
-        setLineStateColour(ContextCompat.getColor(context,R.color.text_gray))
+        setLineStateColour(ContextCompat.getColor(context,R.color.gray))
         tv_error.setText(null)
     }
 
@@ -191,13 +191,13 @@ open class CustomEditText : ConstraintLayout {
                         enterFocus()
                     }
                     false -> {
-                        et_text.setHintTextColor(ContextCompat.getColor(context,R.color.text_gray))
+                        et_text.setHintTextColor(ContextCompat.getColor(context,R.color.gray))
                         if(TextUtils.isEmpty(et_text.getText())){
                             tv_hint.setVisibility(INVISIBLE)
-                            tv_hint.setTextColor(ContextCompat.getColor(context,R.color.text_gray))
+                            tv_hint.setTextColor(ContextCompat.getColor(context,R.color.gray))
 
                             if(getLineStateColour() != ContextCompat.getColor(context,R.color.red))
-                                setLineStateColour(ContextCompat.getColor(context,R.color.text_gray))
+                                setLineStateColour(ContextCompat.getColor(context,R.color.gray))
                         }
                         else{
                             tv_hint.setVisibility(VISIBLE)
