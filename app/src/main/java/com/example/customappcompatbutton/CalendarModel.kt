@@ -1,0 +1,24 @@
+package com.example.customappcompatbutton
+
+class CalendarModel {
+
+    var calendarMonth : Int? = null
+    var calendarFirstWeekDay : Int? = null
+    var calendarMaximumDay: Int? = null
+    var calendarYear : Int? = null
+    var calendarEvent : Int? = null
+
+    constructor(setMonth : Int, setFirstWeekDay : Int, setMaxDay : Int, setYear : Int?, setEvent : Int?){
+        calendarMonth = setMonth
+        calendarFirstWeekDay = setFirstWeekDay
+        calendarMaximumDay = setMaxDay
+        calendarYear = setYear
+        calendarEvent = setEvent
+    }
+
+    companion object {
+        const val Past = 0
+        const val Present = 1
+        const val Future = 2
+    }
+}

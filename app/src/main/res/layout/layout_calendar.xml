@@ -133,7 +133,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                     android:visibility="visible"
-                    android:id="@+id/rv_calendar"
+                    android:id="@+id/recyclerView_calendar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/row_recycler_view_calendar"/>
@@ -164,4 +164,5 @@
         />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    
 </LinearLayout>
