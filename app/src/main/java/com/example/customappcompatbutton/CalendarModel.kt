@@ -15,10 +15,4 @@ class CalendarModel {
         calendarYear = setYear
         calendarEvent = setEvent
     }
-
-    companion object {
-        const val Past = 0
-        const val Present = 1
-        const val Future = 2
-    }
 }

@@ -39,14 +39,14 @@ class CalendarDateFormatter {
             for (i in 1..maxPastMonth+1) {
                 if (i == 1) {
                     listInit.add(CalendarModel(
-                        CalendarDateFormatter.setMonth(currentDate.get(Calendar.MONTH), false, false).toInt(),
+                        setMonth(currentDate.get(Calendar.MONTH), false, false).toInt(),
                         currentDate.get(Calendar.DAY_OF_WEEK),
                         currentDate.getActualMaximum(Calendar.DATE),
                         currentDate.get(Calendar.YEAR),
                         CalendarViewModel.Present))
                 } else {
                     listInit.add(CalendarModel(
-                        CalendarDateFormatter.setMonth(currentDate.get(Calendar.MONTH), false, false).toInt(),
+                        setMonth(currentDate.get(Calendar.MONTH), false, false).toInt(),
                         currentDate.get(Calendar.DAY_OF_WEEK),
                         currentDate.getActualMaximum(Calendar.DATE),
                         currentDate.get(Calendar.YEAR),
