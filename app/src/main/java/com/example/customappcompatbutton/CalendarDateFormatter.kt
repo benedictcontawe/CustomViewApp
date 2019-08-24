@@ -11,14 +11,25 @@ class CalendarDateFormatter {
         val arrayDay = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09")
         val dateWeek = arrayOf("", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
 
-        fun setMonth(month: Int, isWord: Boolean, isFullWord: Boolean) : String {
+        fun setMonth(month: Int?, isWord: Boolean, isFullWord: Boolean) : String {
+            if (month == null) {
+                return ""
+            }
             return when (isFullWord) {
                 true -> {
-                    if (isWord) arrayFullMonth[month] else arrayNumberMonth[month]
+                    if (isWord) arrayFullMonth[month.minus(1)] else arrayNumberMonth[month]
                 }
                 false -> {
-                    if (isWord) arrayMonth[month] else arrayNumberMonth[month]
+                    if (isWord) arrayMonth[month.minus(1)] else arrayNumberMonth[month.minus(1)]
                 }
+            }
+        }
+
+        fun setDay(day: Int, isTwoDigit: Boolean): String {
+            if (day <= 9 && isTwoDigit) {
+                return arrayDay[day - 1]
+            } else {
+                return day.toString()
             }
         }
 
@@ -26,25 +37,32 @@ class CalendarDateFormatter {
             return if (currentDay <= MaximumDay) currentDay else 0
         }
 
-        fun setScrollableCalendar(maxPastMonth: Int): MutableList<CalendarViewModel> {
+        /**getDate : Int return YYYYMMDD*/
+        fun getDate(month : Int, day : Int, year : Int) : Int {
+            val subMonth = setMonth(month - 1, false, false)
+            val subDay = setDay(day, true)
+            return ("$year$subMonth$subDay").toInt()
+        }
+
+        fun setScrollableCalendar(setMaxPastMonth: Int, setDayOfMonth : Int): MutableList<CalendarViewModel> {
             //region First Set-Up
             val previousDate: Calendar = Calendar.getInstance()
             val currentDate: Calendar = Calendar.getInstance()
             val futureDate: Calendar = Calendar.getInstance()
             val listInit = mutableListOf<CalendarModel>()
 
-            previousDate.set(Calendar.DAY_OF_MONTH, 2)
+            previousDate.set(Calendar.DAY_OF_MONTH, setDayOfMonth)
             previousDate.add(Calendar.MONTH, -1) //Minus 1 month
 
-            currentDate.set(Calendar.DAY_OF_MONTH, 2)
+            currentDate.set(Calendar.DAY_OF_MONTH, setDayOfMonth)
             //currentDate.add(Calendar.DATE, 1) //Add 1 day
 
-            futureDate.set(Calendar.DAY_OF_MONTH, 1)
+            futureDate.set(Calendar.DAY_OF_MONTH, setDayOfMonth)
             futureDate.add(Calendar.MONTH, 1) //Add 1 month
 
             listInit.clear()
 
-            for (i in 0.. maxPastMonth + 1) {
+            for (i in 0.. setMaxPastMonth + 1) {
                 if (i == 0) {
                     listInit.add(CalendarModel
                         (
@@ -84,7 +102,7 @@ class CalendarDateFormatter {
             val list = mutableListOf<CalendarViewModel>()
             list.clear()
             listInit.map {
-                list.add(CalendarViewModel(it.calendarMonth!!, it.calendarYear!!, it.calendarEvent))
+                list.add(CalendarViewModel(it.calendarMonth?:0, it.calendarYear?:0, it.calendarEvent))
             }
 
             for (i in 0 until list.size) {

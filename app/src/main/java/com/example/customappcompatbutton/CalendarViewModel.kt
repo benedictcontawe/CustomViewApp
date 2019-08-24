@@ -56,9 +56,19 @@ class CalendarViewModel {
     var extendSelectedEndDay : Boolean? = null
 
     companion object {
+        const val Null = -1
         const val Past = 0
         const val Present = 1
         const val Future = 2
+
+        fun getEvent(event : Int) : String {
+            return when(event) {
+                Past -> { "Past" }
+                Present -> { "Present" }
+                Future -> { "Future" }
+                else -> { "Unknown" }
+            }
+        }
     }
 
     constructor(setMonth : Int, setYear : Int?, setEvent : Int?){

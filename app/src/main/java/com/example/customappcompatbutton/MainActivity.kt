@@ -2,16 +2,31 @@ package com.example.customappcompatbutton
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var calendarFragment : CalendarFragment
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        onSetEvents()
+    }
+
+    private fun onSetEvents() {
+        btn_show.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View) {
+        when(v.getId()) {
+            btn_show.getId() -> {
+                showCalendar()
+            }
+        }
     }
 
     override fun onResume() {
@@ -26,6 +41,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showCalendar() {
         calendarFragment = CalendarFragment()
-        getSupportFragmentManager().beginTransaction().add(R.id.main_layout, calendarFragment).commit()
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_layout, calendarFragment).commit()
     }
 }

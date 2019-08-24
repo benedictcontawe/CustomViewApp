@@ -15,8 +15,8 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder>{
     //private lateinit var list : List<CalendarViewModel>
     private lateinit var list : MutableList<CalendarViewModel>
 
-    constructor(context : Context, calendarListener : CalendarListener) : super(){
-        this.context = context
+    constructor(context : Context?, calendarListener : CalendarListener) : super(){
+        this.context = context?:this.context
         this.calendarListener = calendarListener
     }
 

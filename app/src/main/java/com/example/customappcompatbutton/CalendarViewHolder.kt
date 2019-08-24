@@ -1,6 +1,7 @@
 package com.example.customappcompatbutton
 
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -165,7 +166,7 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
 
     fun bindDataToViewHolder(item: CalendarViewModel, position: Int) {
         //region Input Data
-        itemTextTypeMonth.text = setMonth(item.calendarMonth!!-1,true,true)
+        itemTextTypeMonth.text = setMonth(item.calendarMonth,true,true)
         itemTextTypeYear.text =  item.calendarYear.toString()
         itemTextType1stDay.text  = item.calendarDay1.toString()
         itemTextType2ndDay.text  = item.calendarDay2.toString()
@@ -211,16 +212,33 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         itemTextType42ndDay.text  = item.calendarDay42.toString()
         //endregion
         //region Set Listener
+        resetEvents()
+        setDayVisibility()
         setEvents(item, position)
         //endregion
     }
 
-    private fun setEvents(item : CalendarViewModel, position : Int){
+    private fun resetEvents(){
         itemDayList.map {
+            it.setOnClickListener(null)
+        }
+    }
+
+    private fun setDayVisibility(){
+        //set Day View visibility
+        itemDayList.filter { it.text == "0" && it.visibility != View.INVISIBLE }.map { it.visibility = View.INVISIBLE }
+        itemDayList.filter { it.text != "0" && it.visibility != View.VISIBLE }.map { it.visibility = View.VISIBLE }
+    }
+
+    private fun setEvents(item : CalendarViewModel, position : Int){
+        itemDayList.filter {
+            it.text != "0"
+        }.map {
             /* On Click */
             it.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(view: View) {
-                    calendarListener.onClick(item,position)
+                    Log.d("onClick", "${item.calendarMonth} ${it.text} ${item.calendarYear} ${CalendarDateFormatter.getDate(item.calendarMonth?:0, it.text.toString().toInt(), item.calendarYear?:0)}")
+                    calendarListener.onClick(item, position, it.text.toString().toInt())
                 }
             })
         }
