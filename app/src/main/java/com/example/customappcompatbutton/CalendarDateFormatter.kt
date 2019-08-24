@@ -28,31 +28,56 @@ class CalendarDateFormatter {
 
         fun setScrollableCalendar(maxPastMonth: Int): MutableList<CalendarViewModel> {
             //region First Set-Up
+            val previousDate: Calendar = Calendar.getInstance()
             val currentDate: Calendar = Calendar.getInstance()
             val futureDate: Calendar = Calendar.getInstance()
             val listInit = mutableListOf<CalendarModel>()
 
+            previousDate.set(Calendar.DAY_OF_MONTH, 2)
+            previousDate.add(Calendar.MONTH, -1) //Minus 1 month
+
             currentDate.set(Calendar.DAY_OF_MONTH, 2)
+            //currentDate.add(Calendar.DATE, 1) //Add 1 day
+
             futureDate.set(Calendar.DAY_OF_MONTH, 1)
+            futureDate.add(Calendar.MONTH, 1) //Add 1 month
+
             listInit.clear()
 
-            for (i in 1..maxPastMonth+1) {
-                if (i == 1) {
-                    listInit.add(CalendarModel(
+            for (i in 0.. maxPastMonth + 1) {
+                if (i == 0) {
+                    listInit.add(CalendarModel
+                        (
+                        setMonth(futureDate.get(Calendar.MONTH), false, false).toInt(),
+                        futureDate.get(Calendar.DAY_OF_WEEK),
+                        futureDate.getActualMaximum(Calendar.DATE),
+                        futureDate.get(Calendar.YEAR),
+                        CalendarViewModel.Future
+                        )
+                    )
+                } else if (i == 1) {
+                    listInit.add(CalendarModel
+                        (
                         setMonth(currentDate.get(Calendar.MONTH), false, false).toInt(),
                         currentDate.get(Calendar.DAY_OF_WEEK),
                         currentDate.getActualMaximum(Calendar.DATE),
                         currentDate.get(Calendar.YEAR),
-                        CalendarViewModel.Present))
+                        CalendarViewModel.Present
+                        )
+                    )
                 } else {
-                    listInit.add(CalendarModel(
-                        setMonth(currentDate.get(Calendar.MONTH), false, false).toInt(),
-                        currentDate.get(Calendar.DAY_OF_WEEK),
-                        currentDate.getActualMaximum(Calendar.DATE),
-                        currentDate.get(Calendar.YEAR),
-                        CalendarViewModel.Past))
+                    listInit.add(CalendarModel
+                        (
+                        setMonth(previousDate.get(Calendar.MONTH), false, false).toInt(),
+                        previousDate.get(Calendar.DAY_OF_WEEK),
+                        previousDate.getActualMaximum(Calendar.DATE),
+                        previousDate.get(Calendar.YEAR),
+                        CalendarViewModel.Past
+                        )
+                    )
+                    previousDate.add(Calendar.MONTH, -1) //Minus 1 month
                 }
-                currentDate.add(Calendar.MONTH, -1)
+
             }
             //endregion
 
@@ -382,57 +407,7 @@ class CalendarDateFormatter {
                 }
             }
 
-
             list.reverse()
-
-            for (i in 0..list.size - 1) {
-                System.out.println("For-list-reverse ${list[i].calendarMonth} ${list[i].calendarYear}..." +
-                        "${list[i].selectedFromDay}-${list[i].selectedToDay}..." +
-                        "${list[i].event}..." +
-                        "${list[i].extendSelectedStartDay}-${list[i].extendSelectedEndDay}..." +
-                        "${list[i].calendarDay1}," +
-                        "${list[i].calendarDay2}," +
-                        "${list[i].calendarDay3}," +
-                        "${list[i].calendarDay4}," +
-                        "${list[i].calendarDay5}," +
-                        "${list[i].calendarDay6}," +
-                        "${list[i].calendarDay7}," +
-                        "${list[i].calendarDay8}," +
-                        "${list[i].calendarDay9}," +
-                        "${list[i].calendarDay10}," +
-                        "${list[i].calendarDay11}," +
-                        "${list[i].calendarDay12}," +
-                        "${list[i].calendarDay13}," +
-                        "${list[i].calendarDay14}," +
-                        "${list[i].calendarDay15}," +
-                        "${list[i].calendarDay16}," +
-                        "${list[i].calendarDay17}," +
-                        "${list[i].calendarDay18}," +
-                        "${list[i].calendarDay19}," +
-                        "${list[i].calendarDay20}," +
-                        "${list[i].calendarDay21}," +
-                        "${list[i].calendarDay22}," +
-                        "${list[i].calendarDay23}," +
-                        "${list[i].calendarDay24}," +
-                        "${list[i].calendarDay25}," +
-                        "${list[i].calendarDay26}," +
-                        "${list[i].calendarDay27}," +
-                        "${list[i].calendarDay28}," +
-                        "${list[i].calendarDay29}," +
-                        "${list[i].calendarDay30}," +
-                        "${list[i].calendarDay31}," +
-                        "${list[i].calendarDay32}," +
-                        "${list[i].calendarDay33}," +
-                        "${list[i].calendarDay34}," +
-                        "${list[i].calendarDay35}," +
-                        "${list[i].calendarDay36}," +
-                        "${list[i].calendarDay37}," +
-                        "${list[i].calendarDay38}," +
-                        "${list[i].calendarDay39}," +
-                        "${list[i].calendarDay40}," +
-                        "${list[i].calendarDay41}," +
-                        "${list[i].calendarDay42}")
-            }
 
             return list
         }
