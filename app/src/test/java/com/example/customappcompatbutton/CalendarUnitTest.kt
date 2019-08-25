@@ -11,14 +11,15 @@ class CalendarUnitTest {
 
     @Before
     fun before() {
+        System.out.println("Initial Testing")
         maxPastMonth = 12
     }
-
+    /*
     @BeforeClass
     fun beforeClass() {
 
     }
-
+    */
     @Test
     fun TestCalendarList() {
         val list = CalendarDateFormatter.setScrollableCalendar(maxPastMonth?:0, Calendar.SUNDAY)
@@ -82,14 +83,14 @@ class CalendarUnitTest {
 
         assertEquals(maxPastMonth,list.filter { it.event == 0 }.size)
     }
-
+    /*
     @AfterClass
     fun afterClass() {
 
     }
-
+    */
     @After
     fun after() {
-
+        System.out.println("Done Testing")
     }
 }
