@@ -58,7 +58,7 @@ class CalendarFragment : Fragment(), CalendarListener, View.OnClickListener {
 
     override fun onClick(item : CalendarViewModel, position : Int, daySelected : Int) {
         Log.d(CalendarFragment::class.java.simpleName,"onClick ${item.calendarMonth} ${daySelected} ${item.calendarYear} ${item.event} ${position}")
-        myView.tv_event.text = CalendarViewModel.getEvent(item.event?:CalendarViewModel.Null)
+        myView.tv_event.text = "${CalendarViewModel.getEvent(item.event?:CalendarViewModel.Null)} Month"
         myView.tv_calendar_date.text = "${CalendarDateFormatter.setMonth(item.calendarMonth,true,true)} ${daySelected} ${item.calendarYear}"
 
 
