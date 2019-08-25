@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customscrollablecalendar
 
 import org.junit.*
 
@@ -17,7 +17,6 @@ class CalendarUnitTest {
     /*
     @BeforeClass
     fun beforeClass() {
-
     }
     */
     @Test
@@ -81,12 +80,11 @@ class CalendarUnitTest {
                     "${list[i].calendarDay42}")
         }
 
-        assertEquals(maxPastMonth,list.filter { it.event == 0 }.size)
+        assertEquals(maxPastMonth,list.filter { it.event == CalendarViewModel.Past }.size)
     }
     /*
     @AfterClass
     fun afterClass() {
-
     }
     */
     @After

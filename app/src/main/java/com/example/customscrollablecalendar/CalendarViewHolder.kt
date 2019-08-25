@@ -1,11 +1,11 @@
-package com.example.customappcompatbutton
+package com.example.customscrollablecalendar
 
 import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.customappcompatbutton.CalendarDateFormatter.Companion.setMonth
+import com.example.customscrollablecalendar.CalendarDateFormatter.Companion.setMonth
 import kotlinx.android.synthetic.main.row_recycler_view_calendar.view.*
 
 class CalendarViewHolder : RecyclerView.ViewHolder {

@@ -1,12 +1,14 @@
-package com.example.customappcompatbutton
+package com.example.customscrollablecalendar
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_calendar.view.*
 import java.util.*
 
@@ -43,6 +45,19 @@ class CalendarFragment : Fragment(), CalendarListener, View.OnClickListener {
         myView.recyclerView_calendar.setAdapter(adapter)
         myView.recyclerView_calendar.addItemDecoration(itemDecorationHelper)
         myView.recyclerView_calendar.scrollToPosition(adapter.itemCount)
+        myView.recyclerView_calendar.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if (dy > 0) {
+                    Toast.makeText(context,"bottom",Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+        })
 
         adapter.setItems(itemlist)
     }
