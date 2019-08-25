@@ -8,7 +8,7 @@ class CalendarModel {
     var calendarYear : Int? = null
     var calendarEvent : Int? = null
 
-    constructor(setMonth : Int, setFirstWeekDay : Int, setMaxDay : Int, setYear : Int?, setEvent : Int?){
+    constructor(setMonth : Int, setFirstWeekDay : Int, setMaxDay : Int, setYear : Int?, setEvent : Int?) {
         calendarMonth = setMonth
         calendarFirstWeekDay = setFirstWeekDay
         calendarMaximumDay = setMaxDay

@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.layout_calendar.view.*
@@ -37,13 +36,13 @@ class CalendarFragment : Fragment(), CalendarListener, View.OnClickListener {
         val linearLayoutManager : LinearLayoutManager = LinearLayoutManager(getContext())
         adapter = CalendarAdapter(getContext(), this)
         itemDecorationHelper = CustomBottomOffsetDecoration(100)
-        itemlist = CalendarDateFormatter.setScrollableCalendar(6, Calendar.SUNDAY)
+        itemlist = CalendarDateFormatter.setScrollableCalendar(12, Calendar.SATURDAY)
 
         myView.recyclerView_calendar.removeItemDecoration(itemDecorationHelper)
         myView.recyclerView_calendar.setLayoutManager(linearLayoutManager)
         myView.recyclerView_calendar.setAdapter(adapter)
-        myView.recyclerView_calendar.scrollToPosition(6)
         myView.recyclerView_calendar.addItemDecoration(itemDecorationHelper)
+        myView.recyclerView_calendar.scrollToPosition(adapter.itemCount)
 
         adapter.setItems(itemlist)
     }
@@ -60,7 +59,5 @@ class CalendarFragment : Fragment(), CalendarListener, View.OnClickListener {
         Log.d(CalendarFragment::class.java.simpleName,"onClick ${item.calendarMonth} ${daySelected} ${item.calendarYear} ${item.event} ${position}")
         myView.tv_event.text = "${CalendarViewModel.getEvent(item.event?:CalendarViewModel.Null)} Month"
         myView.tv_calendar_date.text = "${CalendarDateFormatter.setMonth(item.calendarMonth,true,true)} ${daySelected} ${item.calendarYear}"
-
-
     }
 }

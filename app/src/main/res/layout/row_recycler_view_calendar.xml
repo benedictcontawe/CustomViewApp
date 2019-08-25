@@ -94,7 +94,7 @@
     <!--Day of week-->
 
     <TextView
-            android:id="@+id/tv_sun"
+            android:id="@+id/tv_week_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -108,7 +108,7 @@
             app:layout_constraintVertical_chainStyle="packed"/>
 
     <TextView
-            android:id="@+id/tv_mon"
+            android:id="@+id/tv_week_2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -119,10 +119,10 @@
             app:layout_constraintTop_toBottomOf="@id/ll_top"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_1"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_2"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sun"/>
+            app:layout_constraintBottom_toBottomOf="@id/tv_week_1"/>
 
     <TextView
-            android:id="@+id/tv_tue"
+            android:id="@+id/tv_week_3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -133,10 +133,10 @@
             app:layout_constraintTop_toBottomOf="@id/ll_top"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_2"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_3"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sun"/>
+            app:layout_constraintBottom_toBottomOf="@id/tv_week_1"/>
 
     <TextView
-            android:id="@+id/tv_wed"
+            android:id="@+id/tv_week_4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -147,10 +147,10 @@
             app:layout_constraintTop_toBottomOf="@id/ll_top"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_3"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_4"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sun"/>
+            app:layout_constraintBottom_toBottomOf="@id/tv_week_1"/>
 
     <TextView
-            android:id="@+id/tv_thu"
+            android:id="@+id/tv_week_5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -161,10 +161,10 @@
             app:layout_constraintTop_toBottomOf="@id/ll_top"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_4"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_5"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sun"/>
+            app:layout_constraintBottom_toBottomOf="@id/tv_week_1"/>
 
     <TextView
-            android:id="@+id/tv_fri"
+            android:id="@+id/tv_week_6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -175,10 +175,10 @@
             app:layout_constraintTop_toBottomOf="@id/ll_top"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_5"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_6"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sun"/>
+            app:layout_constraintBottom_toBottomOf="@id/tv_week_1"/>
 
     <TextView
-            android:id="@+id/tv_sat"
+            android:id="@+id/tv_week_7"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -189,7 +189,7 @@
             app:layout_constraintTop_toBottomOf="@id/ll_top"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_6"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_7"
-            app:layout_constraintBottom_toBottomOf="@id/tv_sun"/>
+            app:layout_constraintBottom_toBottomOf="@id/tv_week_1"/>
 
     <!--First week-->
 
@@ -198,7 +198,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toBottomOf="@id/tv_sun"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_1">
 
@@ -220,7 +220,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/rl_1"
             app:layout_constraintEnd_toStartOf="@+id/rl_3"
             app:layout_constraintStart_toEndOf="@+id/rl_1"
-            app:layout_constraintTop_toBottomOf="@id/tv_mon"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_2"
             app:layout_constraintVertical_chainStyle="packed">
 
         <TextView
@@ -239,7 +239,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toBottomOf="@id/tv_tue"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_3"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_2"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_3"
             app:layout_constraintBottom_toBottomOf="@id/rl_1">
@@ -261,7 +261,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toBottomOf="@id/tv_wed"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_4"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_3"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_4"
             app:layout_constraintBottom_toBottomOf="@id/rl_1">
@@ -282,7 +282,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toBottomOf="@id/tv_thu"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_5"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_4"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_5"
             app:layout_constraintBottom_toBottomOf="@id/rl_1">
@@ -302,7 +302,7 @@
             android:id="@+id/rl_6"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_fri"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_6"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_5"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_6"
             app:layout_constraintBottom_toBottomOf="@id/rl_1">
@@ -323,7 +323,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintTop_toBottomOf="@id/tv_sat"
+            app:layout_constraintTop_toBottomOf="@id/tv_week_7"
             app:layout_constraintStart_toStartOf="@id/constraint_guideline_6"
             app:layout_constraintEnd_toEndOf="@id/constraint_guideline_7"
             app:layout_constraintBottom_toBottomOf="@id/rl_1">

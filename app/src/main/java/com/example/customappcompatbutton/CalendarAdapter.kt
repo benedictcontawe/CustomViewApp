@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder>{
+class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder> {
 
     /**Main */
     private lateinit var context : Context
@@ -15,7 +15,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder>{
     //private lateinit var list : List<CalendarViewModel>
     private lateinit var list : MutableList<CalendarViewModel>
 
-    constructor(context : Context?, calendarListener : CalendarListener) : super(){
+    constructor(context : Context?, calendarListener : CalendarListener) : super() {
         this.context = context?:this.context
         this.calendarListener = calendarListener
     }
@@ -25,7 +25,7 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder>{
         list = mutableListOf<CalendarViewModel>()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : CalendarViewHolder {
         val layoutInflater : LayoutInflater = LayoutInflater.from(context)
         val view : View = layoutInflater.inflate(R.layout.row_recycler_view_calendar, parent, false)
         return CalendarViewHolder(context, view, calendarListener)

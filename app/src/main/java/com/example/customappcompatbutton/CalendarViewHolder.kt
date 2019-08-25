@@ -16,6 +16,13 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
     /**Data */
     private var itemTextTypeMonth: TextView
     private var itemTextTypeYear: TextView
+    private var itemTextType1stWeekDay: TextView
+    private var itemTextType2ndWeekDay: TextView
+    private var itemTextType3rdWeekDay: TextView
+    private var itemTextType4thWeekDay: TextView
+    private var itemTextType5thWeekDay: TextView
+    private var itemTextType6thWeekDay: TextView
+    private var itemTextType7thWeekDay: TextView
     /**With Events and Others */
     private var itemTextType1stDay: TextView
     private var itemTextType2ndDay: TextView
@@ -117,6 +124,15 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         itemTextType41ndDay = itemView.tv_41
         itemTextType42ndDay = itemView.tv_42
         //endregion
+        //region Connecting variables of day to the text view
+        itemTextType1stWeekDay = itemView.tv_week_1
+        itemTextType2ndWeekDay = itemView.tv_week_2
+        itemTextType3rdWeekDay = itemView.tv_week_3
+        itemTextType4thWeekDay = itemView.tv_week_4
+        itemTextType5thWeekDay = itemView.tv_week_5
+        itemTextType6thWeekDay = itemView.tv_week_6
+        itemTextType7thWeekDay = itemView.tv_week_7
+        //endregion
         //region List of TextView
         itemDayList.clear()
         itemDayList.add(itemTextType1stDay)
@@ -168,6 +184,15 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         //region Input Data
         itemTextTypeMonth.text = setMonth(item.calendarMonth,true,true)
         itemTextTypeYear.text =  item.calendarYear.toString()
+
+        itemTextType1stWeekDay.text = item.calendarWeekDay1.toString()
+        itemTextType2ndWeekDay.text = item.calendarWeekDay2.toString()
+        itemTextType3rdWeekDay.text = item.calendarWeekDay3.toString()
+        itemTextType4thWeekDay.text = item.calendarWeekDay4.toString()
+        itemTextType5thWeekDay.text = item.calendarWeekDay5.toString()
+        itemTextType6thWeekDay.text = item.calendarWeekDay6.toString()
+        itemTextType7thWeekDay.text = item.calendarWeekDay7.toString()
+
         itemTextType1stDay.text  = item.calendarDay1.toString()
         itemTextType2ndDay.text  = item.calendarDay2.toString()
         itemTextType3rdDay.text  = item.calendarDay3.toString()
@@ -218,19 +243,19 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         //endregion
     }
 
-    private fun resetEvents(){
+    private fun resetEvents() {
         itemDayList.map {
             it.setOnClickListener(null)
         }
     }
 
-    private fun setDayVisibility(){
+    private fun setDayVisibility() {
         //set Day View visibility
         itemDayList.filter { it.text == "0" && it.visibility != View.INVISIBLE }.map { it.visibility = View.INVISIBLE }
         itemDayList.filter { it.text != "0" && it.visibility != View.VISIBLE }.map { it.visibility = View.VISIBLE }
     }
 
-    private fun setEvents(item : CalendarViewModel, position : Int){
+    private fun setEvents(item : CalendarViewModel, position : Int) {
         itemDayList.filter {
             it.text != "0"
         }.map {

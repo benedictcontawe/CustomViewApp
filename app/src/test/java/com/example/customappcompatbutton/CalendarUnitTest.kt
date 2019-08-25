@@ -3,6 +3,7 @@ package com.example.customappcompatbutton
 import org.junit.*
 
 import org.junit.Assert.*
+import java.util.*
 
 class CalendarUnitTest {
 
@@ -20,12 +21,19 @@ class CalendarUnitTest {
 
     @Test
     fun TestCalendarList() {
-        val list = CalendarDateFormatter.setScrollableCalendar(maxPastMonth?:0)
+        val list = CalendarDateFormatter.setScrollableCalendar(maxPastMonth?:0, Calendar.SUNDAY)
 
         for (i in 0..list.size - 1) {
             System.out.println("For-list-reverse " +
                     "${list[i].calendarMonth} ${list[i].calendarYear}..." +
                     "${list[i].selectedFromDay}-${list[i].selectedToDay}..." +
+                    "${list[i].calendarWeekDay1} " +
+                    "${list[i].calendarWeekDay2} " +
+                    "${list[i].calendarWeekDay3} " +
+                    "${list[i].calendarWeekDay4} " +
+                    "${list[i].calendarWeekDay5} " +
+                    "${list[i].calendarWeekDay6} " +
+                    "${list[i].calendarWeekDay7} " +
                     "${list[i].event}..." +
                     "${list[i].extendSelectedStartDay}-${list[i].extendSelectedEndDay}..." +
                     "${list[i].calendarDay1}," +

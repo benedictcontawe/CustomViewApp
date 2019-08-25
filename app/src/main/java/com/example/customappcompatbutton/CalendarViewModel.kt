@@ -5,6 +5,14 @@ class CalendarViewModel {
     var calendarMonth : Int? = null
     var calendarYear : Int? = null
 
+    var calendarWeekDay1 : String? = null
+    var calendarWeekDay2 : String? = null
+    var calendarWeekDay3 : String? = null
+    var calendarWeekDay4 : String? = null
+    var calendarWeekDay5 : String? = null
+    var calendarWeekDay6 : String? = null
+    var calendarWeekDay7 : String? = null
+
     var calendarDay1 : Int? = null
     var calendarDay2 : Int? = null
     var calendarDay3 : Int? = null
@@ -71,11 +79,20 @@ class CalendarViewModel {
         }
     }
 
-    constructor(setMonth : Int, setYear : Int?, setEvent : Int?){
+    constructor(setMonth : Int, setYear : Int?, setEvent : Int?) {
+
         calendarMonth = setMonth
         calendarYear = setYear
 
         event = setEvent
+
+        calendarWeekDay1 = ""
+        calendarWeekDay2 = ""
+        calendarWeekDay3 = ""
+        calendarWeekDay4 = ""
+        calendarWeekDay5 = ""
+        calendarWeekDay6 = ""
+        calendarWeekDay7 = ""
 
         calendarDay1 = 0
         calendarDay2 = 0
@@ -126,5 +143,4 @@ class CalendarViewModel {
         extendSelectedStartDay = false
         extendSelectedEndDay = false
     }
-
 }
