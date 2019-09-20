@@ -2,9 +2,14 @@ package com.example.customscrollablecalendar
 
 import org.junit.*
 
-import org.junit.Assert.*
+import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Test
 import java.util.*
 
+/**
+ * Unit Test for {@link CalendarDateFormatter}
+ */
 class CalendarUnitTest {
 
     private var maxPastMonth : Int? = null
