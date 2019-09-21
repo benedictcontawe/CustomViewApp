@@ -30,7 +30,6 @@ public class MainActivity : AppCompatActivity() {
         maskedEditText.setText(true,"MaskedEditText")
         Log.e(MainActivity::class.java.simpleName,maskedEditText.getUnmaskedText())
 
-        //TODO: Finish Amount with Custom Numeric Keypad
         amountEditText.setTextInputLayout(textInputLayoutAmountEditText,false)
         amountEditText.setTextChangeEvent(amountEditText, "PHP")
 
