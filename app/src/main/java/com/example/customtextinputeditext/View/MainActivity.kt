@@ -49,6 +49,7 @@ public class MainActivity : AppCompatActivity() {
                             Keyboard.KEYCODE_CANCEL, Keyboard.KEYCODE_DONE -> hideCustomKeyboard()
                             55006 -> editable?.clear()
                             46 -> if(amountEditText.text?.contains('.')!!)  editable?.insert(start, Character.toString(primaryCode.toChar()))
+                            //-4 -> {}
                             0 -> {}
                             else -> editable?.insert(start, Character.toString(primaryCode.toChar()))
                         }
