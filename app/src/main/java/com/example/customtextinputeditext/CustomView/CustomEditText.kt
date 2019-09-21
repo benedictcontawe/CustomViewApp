@@ -94,12 +94,12 @@ open class CustomEditText : TextInputEditText {
         return mTextInputLayout!!
     }
 
-    fun setListener(textInputLayout : TextInputLayout,enterFocus: ()-> Unit,leaveFocus : ()-> Unit){
+    fun setListener(textInputLayout : TextInputLayout,enterFocus: (v : View) -> Unit,leaveFocus : () -> Unit){
         this.onFocusChangeListener = object : OnFocusChangeListener {
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+            override fun onFocusChange(view: View, hasFocus: Boolean) {
                 when(hasFocus) {
                     true -> {
-                        enterFocus()
+                        enterFocus(view)
                         Log.e("setListener","hasFocus-true")
                         Log.e("setListener","text-${this@CustomEditText}")
                     }

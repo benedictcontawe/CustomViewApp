@@ -1,15 +1,13 @@
 package com.example.customtextinputeditext.View
 
 import android.app.Activity
-import android.content.Intent
-import android.database.Cursor
+import android.inputmethodservice.Keyboard
+import android.inputmethodservice.KeyboardView
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
+import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.example.customtextinputeditext.CustomView.ContactEditText
-import com.example.customtextinputeditext.Formatter.MobileFormatter
 import com.example.customtextinputeditext.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,59 +21,77 @@ public class MainActivity : AppCompatActivity() {
     }
 
     private fun configureCustomEditText() {
-        customEditText.setTextInputLayout(textInputLayoutCustomEditText)
-
-        //TODO: Update Masked Edit Text with parameter characterMasked : String characterQuantity : Int
-        maskedEditText.setTextInputLayout(textInputLayoutMaskedEditText)
-        maskedEditText.setText(true,"MaskedEditText")
-        Log.e(MainActivity::class.java.simpleName,maskedEditText.getUnmaskedText())
-
         //TODO: Finish Amount with Custom Numeric Keypad
         amountEditText.setTextInputLayout(textInputLayoutAmountEditText,false)
-        amountEditText.setTextChangeEvent(amountEditText, "PHP")
+        //amountEditText.setTextChangeEvent(amountEditText, "PHP")
+        amountEditText.setTextChangeEvent(amountEditText,"PHP",
+            setUpKeyboard = {
+                //Create the keyboard
+                val keyboard : Keyboard = Keyboard(this,R.xml.amount_keyboard_layout)
 
-        calendarDateEditText.setTextInputLayout(textInputLayoutCalendarDateEditText,false)
-        calendarDateEditText.setListener(this,textInputLayoutCalendarDateEditText,calendarDateEditText)
+                //Look up the Keyboard View
+                keyboard_view
 
-        contactEditText.setTextInputLayout(textInputLayoutContactEditText, true)
-        contactEditText.setListener(contactEditText,
-            showContacts = {
-                val contactPickerIntent = Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)
-                ActivityCompat.startActivityForResult(this, contactPickerIntent, ContactEditText.code, null)
+                // Attach the keyboard to the view
+                keyboard_view.setKeyboard(keyboard)
+
+                // Install the key handler
+                keyboard_view.setOnKeyboardActionListener(object : KeyboardView.OnKeyboardActionListener {
+                    override fun onKey(primaryCode: Int, keyCodes: IntArray) {
+                        // Get the EditText and its Editable
+                        val focusCurrent = this@MainActivity.window.currentFocus
+                        val edittext = amountEditText
+                        val editable = edittext.text
+                        val start = edittext.selectionStart
+                        // Handle key
+                        when(primaryCode){
+                            Keyboard.KEYCODE_DELETE -> if (start > 0) editable?.delete(start - 1, start)
+                            Keyboard.KEYCODE_CANCEL, Keyboard.KEYCODE_DONE -> hideCustomKeyboard()
+                            55006 -> editable?.clear()
+                            46 -> if(amountEditText.text?.contains('.')!!)  editable?.insert(start, Character.toString(primaryCode.toChar()))
+                            0 -> {}
+                            else -> editable?.insert(start, Character.toString(primaryCode.toChar()))
+                        }
+                    }
+                    override fun onPress(arg0: Int) {}
+
+                    override fun onRelease(primaryCode: Int) {}
+
+                    override fun onText(text: CharSequence) {}
+
+                    override fun swipeDown() {}
+
+                    override fun swipeLeft() {}
+
+                    override fun swipeRight() {}
+
+                    override fun swipeUp() {}
+                });
+
+                // Hide the standard keyboard initially
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+
+                // Do not show the preview balloons
+                keyboard_view.setPreviewEnabled(false)
             },
-            onError = {
-                Log.e(MainActivity::class.java.simpleName,it)
-            })
-
+            showCustomKeyboard = {
+                keyboard_view.setVisibility(View.VISIBLE)
+                keyboard_view.setEnabled(true)
+                (getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager)
+                    .hideSoftInputFromWindow(
+                        it.getWindowToken(),
+                        0
+                    )
+                amountEditText.requestFocus()
+            },
+            hideCustomKeyboard = {
+                hideCustomKeyboard()
+            }
+        )
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode === Activity.RESULT_OK) {
-            when (requestCode) {
-                ContactEditText.code -> {
-                    var cursor: Cursor? = null
-                    try {
-                        var phoneNo: String? = null
-                        val name: String? = null
-                        val uri = data?.getData()
-                        cursor = contentResolver.query(uri!!, null, null, null, null)
-                        cursor?.moveToFirst()
-                        val phoneIndex = cursor!!.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                        phoneNo = cursor?.getString(phoneIndex)
-                        contactEditText.setText(MobileFormatter.formatContact(phoneNo))
-                        contactEditText.setSelection(contactEditText.length())
-                        contactEditText.setUpperHintColor(contactEditText.getTextInputLayout(), contactEditText)
-                        Log.e("onActivityResult Enroll", "${phoneNo}")
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        Log.e("Error Exception", e.message)
-                    }
-                }
-            }
-        } else {
-            Log.e("onActivityResult", "Failed to pick contact")
-        }
+    private fun hideCustomKeyboard() {
+        keyboard_view.setVisibility(View.GONE)
+        keyboard_view.setEnabled(false)
     }
 }

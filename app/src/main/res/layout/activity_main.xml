@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,68 +7,15 @@
         android:layout_height="match_parent"
         tools:context=".View.MainActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutCustomEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CustomEditText">
-
-            <com.example.customtextinputeditext.CustomView.CustomEditText
-                    android:id="@+id/customEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    tools:text="CustomEditText"
-                    android:imeOptions="actionNext"
-                    android:inputType="textNoSuggestions"
-                    android:maxLines="1"
-                    android:nextFocusUp="@null"
-                    android:nextFocusLeft="@null"
-                    android:nextFocusRight="@null"
-                    android:nextFocusDown="@id/maskedEditText"
-                    app:drawableStartCompat="@drawable/ic_person_black">
-
-            </com.example.customtextinputeditext.CustomView.CustomEditText>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutMaskedEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="MaskedEditText">
-
-            <com.example.customtextinputeditext.CustomView.MaskedEditText
-                    android:id="@+id/maskedEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    tools:text="MaskedEditText"
-                    android:imeOptions="actionNext"
-                    android:inputType="textNoSuggestions"
-                    android:maxLines="1"
-                    android:nextFocusUp="@id/customEditText"
-                    android:nextFocusLeft="@null"
-                    android:nextFocusRight="@null"
-                    android:nextFocusDown="@id/amountEditText"
-                    app:drawableStartCompat="@drawable/ic_key_black"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutAmountEditText"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="AmountEditText">
+                android:hint="AmountEditText"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
             <com.example.customtextinputeditext.CustomView.AmountEditText
                     android:id="@+id/amountEditText"
@@ -79,61 +26,26 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:nextFocusUp="@id/maskedEditText"
+                    android:nextFocusUp="@null"
                     android:nextFocusLeft="@null"
                     android:nextFocusRight="@null"
-                    android:nextFocusDown="@id/calendarDateEditText"
+                    android:nextFocusDown="@null"
                     app:drawableStartCompat="@drawable/ic_calculator_black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutCalendarDateEditText"
-                android:layout_width="match_parent"
+        <android.inputmethodservice.KeyboardView
+                android:id="@+id/keyboard_view"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="CalendarDateEditText">
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@color/white"
+                android:keyBackground="@drawable/custom_key_background"
+                android:keyTextColor="@color/black"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.example.customtextinputeditext.CustomView.CalendarDateEditText
-                android:id="@+id/calendarDateEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                tools:text="CalendarDateEditText"
-                android:imeOptions="actionNext"
-                android:inputType="none"
-                android:maxLines="1"
-                android:nextFocusUp="@id/amountEditText"
-                android:nextFocusLeft="@null"
-                android:nextFocusRight="@null"
-                android:nextFocusDown="@id/contactEditText"
-                app:drawableStartCompat="@drawable/ic_calendar_grey"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutContactEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="ContactEditText">
-
-            <com.example.customtextinputeditext.CustomView.ContactEditText
-                android:id="@+id/contactEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                tools:text="ContactEditText"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:maxLines="1"
-                android:nextFocusUp="@id/calendarDateEditText"
-                android:nextFocusLeft="@null"
-                android:nextFocusRight="@null"
-                android:nextFocusDown="@null"
-                app:drawableEndCompat="@drawable/ic_phonebook_grey"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
