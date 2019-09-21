@@ -13,7 +13,7 @@ import com.example.customtextinputeditext.Formatter.MobileFormatter
 import com.example.customtextinputeditext.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+public class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         maskedEditText.setText(true,"MaskedEditText")
         Log.e(MainActivity::class.java.simpleName,maskedEditText.getUnmaskedText())
 
-        //TODO: Finish Amount with   Custom Numeric Keypad
+        //TODO: Finish Amount with Custom Numeric Keypad
         amountEditText.setTextInputLayout(textInputLayoutAmountEditText,false)
         amountEditText.setTextChangeEvent(amountEditText, "PHP")
 

@@ -83,7 +83,7 @@
                     android:nextFocusLeft="@null"
                     android:nextFocusRight="@null"
                     android:nextFocusDown="@id/calendarDateEditText"
-                    app:drawableStartCompat="@drawable/ic_key_black"/>
+                    app:drawableStartCompat="@drawable/ic_calculator_black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

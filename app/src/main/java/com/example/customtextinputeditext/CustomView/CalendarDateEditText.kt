@@ -85,6 +85,7 @@ class CalendarDateEditText : CustomEditText {
                     stringToBeReturn = displayFormat.format(date)
                     this.setText(stringToBeReturn)
                     setUpperHintColor(getTextInputLayout(), calendarDateEditText)
+                    setSelection(this.length())
                 } catch (e: ParseException) {
                     e.printStackTrace()
                 }
