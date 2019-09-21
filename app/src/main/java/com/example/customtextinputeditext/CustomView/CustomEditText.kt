@@ -94,12 +94,12 @@ open class CustomEditText : TextInputEditText {
         return mTextInputLayout!!
     }
 
-    fun setListener(textInputLayout : TextInputLayout,enterFocus: ()-> Unit,leaveFocus : ()-> Unit){
+    fun setListener(textInputLayout : TextInputLayout,enterFocus: (v : View) -> Unit,leaveFocus : () -> Unit){
         this.onFocusChangeListener = object : OnFocusChangeListener {
-            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+            override fun onFocusChange(view: View, hasFocus: Boolean) {
                 when(hasFocus) {
                     true -> {
-                        enterFocus()
+                        enterFocus(view)
                         Log.e("setListener","hasFocus-true")
                         Log.e("setListener","text-${this@CustomEditText}")
                     }
@@ -110,21 +110,21 @@ open class CustomEditText : TextInputEditText {
                             Log.e("setListener","isNullOrBlank")
                             Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread())
                                 .subscribe {
-                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(
-                                    ContextCompat.getColor(context, R.color.gray
-                                )))
-                                setUpperHintColor(textInputLayout,this@CustomEditText)
-                            }
+                                    ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(
+                                        ContextCompat.getColor(context, R.color.gray
+                                        )))
+                                    setUpperHintColor(textInputLayout,this@CustomEditText)
+                                }
                         }
                         else{
                             Log.e("setListener","Not isNullOrBlank")
                             Observable.timer(50, TimeUnit.MILLISECONDS).observeOn(AndroidSchedulers.mainThread())
                                 .subscribe {
-                                ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(
-                                    ContextCompat.getColor(context, R.color.blue
-                                )))
-                                setUpperHintColor(textInputLayout,this@CustomEditText)
-                            }
+                                    ViewCompat.setBackgroundTintList(this@CustomEditText, ColorStateList.valueOf(
+                                        ContextCompat.getColor(context, R.color.blue
+                                        )))
+                                    setUpperHintColor(textInputLayout,this@CustomEditText)
+                                }
 
                         }
                     }
