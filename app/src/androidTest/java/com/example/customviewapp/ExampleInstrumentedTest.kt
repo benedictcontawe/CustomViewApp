@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customviewapp
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

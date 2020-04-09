@@ -1,4 +1,4 @@
-package com.example.customappcompatbutton
+package com.example.customviewapp
 
 import org.junit.Test
 
