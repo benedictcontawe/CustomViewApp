@@ -6,6 +6,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private Toolbar toolbar;
     private MenuInflater inflater;
+    private FrameLayout frameLayout;
     private ImageButton btnHome,btnSearch,btnEdit,btnDelete,btnUtilities;
 
     @Override
@@ -23,7 +25,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        frameLayout = (FrameLayout) findViewById(R.id.frameLayout);
         setSupportActionBar(toolbar);
 
         btnHome = (ImageButton)findViewById(R.id.btnHome);
@@ -90,6 +93,15 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             default:
                 Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            super.onBackPressed();
+        } else {
+            getSupportFragmentManager().popBackStack();
         }
     }
 }
