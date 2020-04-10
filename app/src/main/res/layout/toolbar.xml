@@ -16,6 +16,16 @@
             app:title="Custom View App"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
+        <TextView
+            android:id="@+id/txtToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Select"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
     </androidx.appcompat.widget.Toolbar>
 
 </com.google.android.material.appbar.AppBarLayout>

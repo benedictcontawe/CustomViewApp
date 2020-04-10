@@ -1,33 +1,30 @@
 package com.example.customviewapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
+    private static String TAG = MainActivity.class.getSimpleName();
     private Toolbar toolbar;
-    private MenuInflater inflater;
-    private FrameLayout frameLayout;
     private ImageButton btnHome,btnSearch,btnEdit,btnDelete,btnUtilities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d(TAG,"onCreate()");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        frameLayout = (FrameLayout) findViewById(R.id.frameLayout);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Main Activity");
 
         btnHome = (ImageButton)findViewById(R.id.btnHome);
         btnSearch = (ImageButton)findViewById(R.id.btnSearch);
@@ -44,53 +41,45 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item2:
-                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item3:
-                Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.subitem1:
-                Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.subitem2:
-                Toast.makeText(this, "Sub Item 2 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        Log.d(TAG,"onCreateOptionsMenu()");
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnHome:
-                Toast.makeText(this, "btnHome", Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"onClick btnHome");
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout,new HomeFragment())
+                        .commitNow();
                 break;
             case R.id.btnSearch:
-                Toast.makeText(this, "btnSearch", Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"onClick btnSearch");
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout,new SearchFragment())
+                        .commitNow();
                 break;
             case R.id.btnEdit:
-                Toast.makeText(this, "btnEdit", Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"onClick btnEdit");
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout,new EditFragment())
+                        .commitNow();
                 break;
             case R.id.btnDelete:
-                Toast.makeText(this, "btnDelete", Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"onClick btnDelete");
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout,new DeleteFragment())
+                        .commitNow();
                 break;
             case R.id.btnUtilities:
-                Toast.makeText(this, "btnUtilities", Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"onClick btnUtilities");
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.frameLayout,new UtilitiesFragment())
+                        .commitNow();
                 break;
             default:
+                Log.d(TAG,"onClick default");
                 Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
                 break;
         }
@@ -98,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public void onBackPressed() {
+        Log.d(TAG,"onBackPressed()");
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
         } else {
