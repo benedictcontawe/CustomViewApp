@@ -18,7 +18,8 @@ public class DeleteFragment extends Fragment implements OnClickListener {
 
     private static String TAG = DeleteFragment.class.getSimpleName();
     private Button btnIncrease,btnDecrease;
-    private int counter;
+    private int counter = -1;
+    private MenuItem deleteSelected, deleteAll;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class DeleteFragment extends Fragment implements OnClickListener {
         setHasOptionsMenu(true);
         Log.d(TAG,"onCreate()");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Delete Fragment");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
     }
 
     @Override
@@ -41,27 +43,54 @@ public class DeleteFragment extends Fragment implements OnClickListener {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG,"onActivityCreated()");
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.delete_menu, menu);
+        switch (counter) {
+            case -1:
+                inflater.inflate(R.menu.delete_menu, menu);
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Delete Fragment");
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
+                break;
+            default:
+                inflater.inflate(R.menu.delete_counter_menu, menu);
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
+                ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(R.drawable.ic_arrow_back);
+                break;
+        }
         super.onCreateOptionsMenu(menu, inflater);
         Log.d(TAG,"onCreateOptionsMenu()");
+        deleteSelected = (MenuItem) menu.findItem(R.id.delete_selected);
+        deleteAll = (MenuItem) menu.findItem(R.id.delete_all);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_delete:
+                Log.d(TAG,"onClick action_delete");
                 Toast.makeText(getContext(), "Delete View selected", Toast.LENGTH_SHORT).show();
+                btnIncrease.setVisibility(View.VISIBLE);
+                btnDecrease.setVisibility(View.VISIBLE);
+                counter = 0;
+                reCreateOptionsMenu();
+                return true;
+            case R.id.delete_selected:
+                Log.d(TAG,"onClick delete_selected");
+                Toast.makeText(getContext(), "Delete Selected " + counter, Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.delete_all:
+                Log.d(TAG,"onClick delete_all");
+                Toast.makeText(getContext(), "Delete All", Toast.LENGTH_SHORT).show();
+                counter = -1;
+                reCreateOptionsMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void reCreateOptionsMenu() {
+        setHasOptionsMenu(false);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -69,16 +98,29 @@ public class DeleteFragment extends Fragment implements OnClickListener {
         switch (view.getId()) {
             case R.id.btnIncrease:
                 Log.d(TAG,"onClick btnIncrease");
-                Toast.makeText(getContext(), "btnIncrease", Toast.LENGTH_SHORT).show();
+                counter++;
+                setIcons();
+                Toast.makeText(getContext(), String.valueOf(counter), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnDecrease:
                 Log.d(TAG,"onClick btnDecrease");
-                Toast.makeText(getContext(), "btnDecrease", Toast.LENGTH_SHORT).show();
+                if (counter > 0) counter--;
+                setIcons();
+                Toast.makeText(getContext(), String.valueOf(counter), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Log.d(TAG,"onClick default");
-                Toast.makeText(getContext(), "Default", Toast.LENGTH_SHORT).show();
                 break;
+        }
+    }
+
+    private void setIcons() {
+        if (counter == 0) {
+            deleteSelected.setVisible(false);
+            deleteAll.setVisible(true);
+        } else {
+            deleteSelected.setVisible(true);
+            deleteAll.setVisible(false);
         }
     }
 }

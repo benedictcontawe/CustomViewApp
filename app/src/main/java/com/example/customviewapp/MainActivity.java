@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Main Activity");
+        //toolbar.setNavigationIcon();
+        //toolbar.setNavigationOnClickListener();
 
         btnHome = (ImageButton)findViewById(R.id.btnHome);
         btnSearch = (ImageButton)findViewById(R.id.btnSearch);

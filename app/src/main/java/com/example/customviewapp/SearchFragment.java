@@ -24,6 +24,7 @@ public class SearchFragment extends Fragment {
         setHasOptionsMenu(true);
         Log.d(TAG,"onCreate()");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Search Fragment");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
     }
 
     @Override
@@ -70,6 +71,7 @@ public class SearchFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
+                Log.d(TAG,"Search View selected");
                 Toast.makeText(getContext(), "Search View selected", Toast.LENGTH_SHORT).show();
                 return true;
             default:

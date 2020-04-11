@@ -22,6 +22,7 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
         Log.d(TAG,"onCreate()");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home Fragment");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
     }
 
     @Override
@@ -47,21 +48,27 @@ public class HomeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
+                Log.d(TAG,"Item 1 selected");
                 Toast.makeText(getContext(), "Item 1 selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.item2:
+                Log.d(TAG,"Item 2 selected");
                 Toast.makeText(getContext(), "Item 2 selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.item3:
+                Log.d(TAG,"Item 3 selected");
                 Toast.makeText(getContext(), "Item 3 selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.subitem1:
+                Log.d(TAG,"Sub Item 1 selected");
                 Toast.makeText(getContext(), "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.subitem2:
+                Log.d(TAG,"Sub Item 2 selected");
                 Toast.makeText(getContext(), "Sub Item 2 selected", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.subitem3:
+                Log.d(TAG,"Sub Item 3 selected (Options Menu Disabled)");
                 Toast.makeText(getContext(), "Sub Item 3 selected (Options Menu Disabled)", Toast.LENGTH_SHORT).show();
                 setHasOptionsMenu(false);
                 return true;

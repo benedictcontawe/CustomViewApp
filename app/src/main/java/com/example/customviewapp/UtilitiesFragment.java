@@ -20,6 +20,7 @@ public class UtilitiesFragment extends Fragment {
         setHasOptionsMenu(false);
         Log.d(TAG,"onCreate()");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Utilities Fragment");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
     }
 
     @Override

@@ -20,6 +20,7 @@ public class EditFragment extends Fragment {
         setHasOptionsMenu(true);
         Log.d(TAG,"onCreate()");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Edit Fragment");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
     }
 
     @Override
