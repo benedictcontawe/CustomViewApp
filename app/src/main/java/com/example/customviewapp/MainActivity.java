@@ -87,6 +87,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
 
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
     @Override
     public void onBackPressed() {
         Log.d(TAG,"onBackPressed()");

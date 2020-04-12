@@ -48,12 +48,19 @@ public class DeleteFragment extends Fragment implements OnClickListener {
             case -1:
                 inflater.inflate(R.menu.delete_menu, menu);
                 ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Delete Fragment");
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
+                ((MainActivity)getActivity()).getToolbar().setNavigationIcon(null);
+                ((MainActivity)getActivity()).getToolbar().setNavigationOnClickListener(null);
                 break;
             default:
                 inflater.inflate(R.menu.delete_counter_menu, menu);
                 ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(R.drawable.ic_arrow_back);
+                ((MainActivity)getActivity()).getToolbar().setNavigationIcon(R.drawable.ic_arrow_back);
+                ((MainActivity)getActivity()).getToolbar().setNavigationOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        resetToolBarState();
+                    }
+                });
                 break;
         }
         super.onCreateOptionsMenu(menu, inflater);
@@ -80,8 +87,7 @@ public class DeleteFragment extends Fragment implements OnClickListener {
             case R.id.delete_all:
                 Log.d(TAG,"onClick delete_all");
                 Toast.makeText(getContext(), "Delete All", Toast.LENGTH_SHORT).show();
-                counter = -1;
-                reCreateOptionsMenu();
+                resetToolBarState();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -91,6 +97,14 @@ public class DeleteFragment extends Fragment implements OnClickListener {
     private void reCreateOptionsMenu() {
         setHasOptionsMenu(false);
         setHasOptionsMenu(true);
+    }
+
+    private void resetToolBarState() {
+        Log.d(TAG,"resetToolBarState()");
+        btnIncrease.setVisibility(View.INVISIBLE);
+        btnDecrease.setVisibility(View.INVISIBLE);
+        counter = -1;
+        reCreateOptionsMenu();
     }
 
     @Override
