@@ -4,6 +4,7 @@ import android.app.Activity
 import android.inputmethodservice.Keyboard
 import android.inputmethodservice.KeyboardView
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -46,8 +47,9 @@ public class MainActivity : AppCompatActivity() {
                         // Handle key
                         when(primaryCode){
                             Keyboard.KEYCODE_DELETE -> if (start > 0) editable?.delete(start - 1, start)
-                            Keyboard.KEYCODE_CANCEL, Keyboard.KEYCODE_DONE -> hideCustomKeyboard()
+                            Keyboard.KEYCODE_DONE -> hideCustomKeyboard()
                             55006 -> editable?.clear()
+                            Keyboard.KEYCODE_CANCEL -> editable?.clear()
                             46 -> if(amountEditText.text?.contains('.')!!)  editable?.insert(start, Character.toString(primaryCode.toChar()))
                             //-4 -> {}
                             0 -> {}
@@ -94,5 +96,10 @@ public class MainActivity : AppCompatActivity() {
     private fun hideCustomKeyboard() {
         keyboard_view.setVisibility(View.GONE)
         keyboard_view.setEnabled(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        amountEditText.dispatchKeyEvent(KeyEvent(0, KeyEvent.KEYCODE_DEL))
     }
 }

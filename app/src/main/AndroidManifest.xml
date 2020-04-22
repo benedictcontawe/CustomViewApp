@@ -13,6 +13,7 @@
             android:theme="@style/AppTheme">
         <activity
                 android:name=".View.MainActivity"
+                android:windowSoftInputMode="adjustResize"
                 android:taskAffinity=".View.MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>

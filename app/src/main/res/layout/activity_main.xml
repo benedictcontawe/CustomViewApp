@@ -42,7 +42,7 @@
                 android:focusableInTouchMode="true"
                 android:background="@color/white"
                 android:keyBackground="@drawable/custom_key_background"
-                android:keyTextColor="@color/black"
+                android:keyTextColor="@color/light_black"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
