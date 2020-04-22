@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
     private Toolbar toolbar;
+    TextView txtToolbar;
     private ImageButton btnHome,btnSearch,btnEdit,btnDelete,btnUtilities;
 
     @Override
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         toolbar.setTitle("Main Activity");
         //toolbar.setNavigationIcon();
         //toolbar.setNavigationOnClickListener();
+
+        txtToolbar = (TextView)findViewById(R.id.txtToolbar);
 
         btnHome = (ImageButton)findViewById(R.id.btnHome);
         btnSearch = (ImageButton)findViewById(R.id.btnSearch);
@@ -89,6 +93,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     public Toolbar getToolbar() {
         return toolbar;
+    }
+
+    public TextView getTxtToolbar() {
+        return txtToolbar;
     }
 
     @Override
