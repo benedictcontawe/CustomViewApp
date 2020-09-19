@@ -9,35 +9,45 @@
     <!--region Guide lines-->
     <!--region Vertical Guide lines-->
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/constraint_guideline_vertical_leading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05"/>
+        android:id="@+id/constraint_guideline_vertical_leading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
 
     <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/constraint_guideline_vertical_trailing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95"/>
+        android:id="@+id/constraint_guideline_vertical_trailing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"/>
     <!--endregion-->
     <!--endregion-->
+    <Space
+        android:id="@+id/space_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:0.025"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:listitem="@layout/action_sheet_cell"
-        tools:itemCount="10"
-        app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"
-        app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_trailing"
-        app:layout_constraintBottom_toTopOf="@+id/space_top" />
+        tools:itemCount="1"
+        app:layout_constraintTop_toBottomOf="@id/space_top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/space_center" />
 
     <Space
-        android:id="@+id/space_top"
+        android:id="@+id/space_center"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:0.05"
+        app:layout_constraintDimensionRatio="1:0.025"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/card_cancel" />
@@ -46,9 +56,9 @@
         android:id="@+id/card_cancel"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardElevation="1dp"
-        app:cardCornerRadius="8dp"
-        app:cardMaxElevation="2dp"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardMaxElevation="@dimen/card_max_elevation"
         app:cardBackgroundColor="@color/white"
         app:layout_constraintDimensionRatio="1:0.10"
         app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"

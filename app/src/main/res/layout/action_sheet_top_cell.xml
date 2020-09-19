@@ -21,7 +21,24 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95"/>
     <!--endregion-->
+    <!--region Horizontal Guidlines-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/constraint_guideline_horizontal_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
     <!--endregion-->
+    <!--endregion-->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_center"
+        app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"
+        app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_trailing"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card_cancel"
         android:layout_width="0dp"
