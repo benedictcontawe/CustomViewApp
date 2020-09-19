@@ -2,21 +2,17 @@ package com.example.customviewapp;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
-    private Toolbar toolbar;
-    TextView txtToolbar;
-    private ImageButton btnHome,btnSearch,btnEdit,btnDelete,btnUtilities;
+    private Button btnActionSheet;
+    private ActionSheetFragment actionSheetFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,79 +20,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         setContentView(R.layout.activity_main);
         Log.d(TAG,"onCreate()");
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Main Activity");
-        //toolbar.setNavigationIcon();
-        //toolbar.setNavigationOnClickListener();
+        btnActionSheet = (Button)findViewById(R.id.btnActionSheet);
 
-        txtToolbar = (TextView)findViewById(R.id.txtToolbar);
-
-        btnHome = (ImageButton)findViewById(R.id.btnHome);
-        btnSearch = (ImageButton)findViewById(R.id.btnSearch);
-        btnEdit = (ImageButton)findViewById(R.id.btnEdit);
-        btnDelete = (ImageButton)findViewById(R.id.btnDelete);
-        btnUtilities = (ImageButton)findViewById(R.id.btnUtilities);
-
-        btnHome.setOnClickListener(this);
-        btnSearch.setOnClickListener(this);
-        btnEdit.setOnClickListener(this);
-        btnDelete.setOnClickListener(this);
-        btnUtilities.setOnClickListener(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG,"onCreateOptionsMenu()");
-        return super.onCreateOptionsMenu(menu);
+        btnActionSheet.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnHome:
-                Log.d(TAG,"onClick btnHome");
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new HomeFragment())
-                        .commitNow();
-                break;
-            case R.id.btnSearch:
-                Log.d(TAG,"onClick btnSearch");
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new SearchFragment())
-                        .commitNow();
-                break;
-            case R.id.btnEdit:
-                Log.d(TAG,"onClick btnEdit");
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new EditFragment())
-                        .commitNow();
-                break;
-            case R.id.btnDelete:
-                Log.d(TAG,"onClick btnDelete");
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new DeleteFragment())
-                        .commitNow();
-                break;
-            case R.id.btnUtilities:
-                Log.d(TAG,"onClick btnUtilities");
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new UtilitiesFragment())
-                        .commitNow();
+            case R.id.btnActionSheet:
+                Log.d(TAG,"onClick btnActionSheet");
+                actionSheetFragment = new ActionSheetFragment();
+                actionSheetFragment.setCancelable(true);
+                actionSheetFragment.show(getSupportFragmentManager(), ActionSheetFragment.TAG);
                 break;
             default:
                 Log.d(TAG,"onClick default");
                 Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
                 break;
         }
-    }
-
-    public Toolbar getToolbar() {
-        return toolbar;
-    }
-
-    public TextView getTxtToolbar() {
-        return txtToolbar;
     }
 
     @Override
