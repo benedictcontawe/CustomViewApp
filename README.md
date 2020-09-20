@@ -1,9 +1,5 @@
 # CustomViewApp
-Custom Toolbar
+Custom Action Sheet
 
 ## References
-https://www.youtube.com/watch?v=DMkzIOLppf4
-
-https://www.youtube.com/watch?v=oh4YOj9VkVE
-
-https://www.youtube.com/watch?v=A9rcKZUm0zM
+https://medium.com/@manuaravindpta/transparent-background-for-bottomsheetdialog-396a1a646f1b
