@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    private static String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
     private Button btnActionSheet;
     private ActionSheetFragment actionSheetFragment;
 

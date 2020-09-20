@@ -3,7 +3,7 @@
     <!--region Card View Size UI XML Components-->
     <dimen name="card_elevation">1dp</dimen>
     <dimen name="no_card_corner_radius">0dp</dimen>
-    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_corner_radius">7dp</dimen>
     <dimen name="card_max_elevation">2dp</dimen>
     <!--endregion-->
 </resources>
