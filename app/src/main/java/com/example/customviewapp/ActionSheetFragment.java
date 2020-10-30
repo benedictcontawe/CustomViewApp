@@ -100,6 +100,7 @@ public class ActionSheetFragment extends BottomSheetDialogFragment implements Vi
     @Override
     public void onClickItem(ActionSheetViewHolderModel actionSheetViewHolderModel, int position) {
         Log.d(TAG,"onClickItem(" + actionSheetViewHolderModel + ", " + position);
+        Toast.makeText(getContext(), "Action Button " + actionSheetViewHolderModel.data + " clicked", Toast.LENGTH_SHORT).show();
         dismiss();
     }
 
