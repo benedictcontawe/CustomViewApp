@@ -30,19 +30,13 @@
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardMaxElevation="@dimen/card_max_elevation"
         app:cardBackgroundColor="@color/white"
-        app:layout_constraintDimensionRatio="1:0.10"
+        app:layout_constraintDimensionRatio="1:0.15"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"
         app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_trailing"
         app:layout_constraintBottom_toBottomOf="parent" >
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:text="Hello"
-            android:textColor="@color/black" />
+        <include layout="@layout/action_sheet_place_holder" />
 
     </androidx.cardview.widget.CardView>
 

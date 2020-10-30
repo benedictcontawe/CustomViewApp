@@ -60,17 +60,66 @@
         app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardMaxElevation="@dimen/card_max_elevation"
         app:cardBackgroundColor="@color/white"
-        app:layout_constraintDimensionRatio="1:0.10"
+        app:layout_constraintDimensionRatio="1:0.15"
         app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"
         app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_trailing"
         app:layout_constraintBottom_toTopOf="@id/space_bottom" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Cancel"
-            android:textColor="@color/black"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            <!--region Guide lines-->
+            <!--region Vertical Guide lines-->
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/constraint_guideline_vertical_inner_leading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.30"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/constraint_guideline_vertical_inner_trailing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.70"/>
+            <!--endregion-->
+            <!--region Horizontal Guidlines-->
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/constraint_guideline_horizontal_top"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.10" />
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/constraint_guideline_horizontal_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.90" />
+            <!--endregion-->
+            <!--endregion-->
+            <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:text="Cancel"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMinTextSize="@dimen/auto_size_min_text_size"
+                    app:autoSizeMaxTextSize="@dimen/auto_size_30_text_size"
+                    app:autoSizeStepGranularity="@dimen/auto_size_step_granularity"
+                    app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_top"
+                    app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_inner_leading"
+                    app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_inner_trailing"
+                    app:layout_constraintBottom_toBottomOf="@+id/constraint_guideline_horizontal_bottom" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

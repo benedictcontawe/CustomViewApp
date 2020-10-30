@@ -6,4 +6,11 @@
     <dimen name="card_corner_radius">7dp</dimen>
     <dimen name="card_max_elevation">2dp</dimen>
     <!--endregion-->
+    <!--region Auto Size UI XML Components-->
+    <dimen name="auto_size_min_text_size">5sp</dimen>
+    <dimen name="auto_size_23_text_size">23sp</dimen>
+    <dimen name="auto_size_30_text_size">30sp</dimen>
+    <dimen name="auto_size_max_text_size">300sp</dimen>
+    <dimen name="auto_size_step_granularity">1sp</dimen>
+    <!--endregion-->
 </resources>
