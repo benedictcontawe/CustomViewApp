@@ -108,9 +108,9 @@ public class ActionSheetFragment extends BottomSheetDialogFragment implements Vi
         list.clear();
         list.add(new ActionSheetViewHolderModel("1"));
         list.add(new ActionSheetViewHolderModel("2"));
-        //list.add(new ActionSheetViewHolderModel("3"));
-        //list.add(new ActionSheetViewHolderModel("4"));
-        //list.add(new ActionSheetViewHolderModel("5"));
+        list.add(new ActionSheetViewHolderModel("3"));
+        list.add(new ActionSheetViewHolderModel("4"));
+        list.add(new ActionSheetViewHolderModel("5"));
         //list.add(new ActionSheetViewHolderModel("6"));
         //list.add(new ActionSheetViewHolderModel("7"));
         //list.add(new ActionSheetViewHolderModel("8"));
