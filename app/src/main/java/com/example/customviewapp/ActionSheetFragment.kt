@@ -24,7 +24,7 @@ class ActionSheetFragment : BottomSheetDialogFragment(), View.OnClickListener, A
 
     private var actionSheetAdapter : ActionSheetAdapter? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(BottomSheetDialogFragment.STYLE_NORMAL, R.style.ActionSheetTheme);
     }

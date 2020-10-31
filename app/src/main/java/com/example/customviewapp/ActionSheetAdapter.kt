@@ -22,7 +22,7 @@ class ActionSheetAdapter : RecyclerView.Adapter<BaseActionSheetViewHolder> {
         ActionSheetAdapter.listener = listener;
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : BaseActionSheetViewHolder {
+    override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : BaseActionSheetViewHolder {
         val layoutInflater : LayoutInflater = LayoutInflater.from(parent.context)
         val view : View
         return when(viewType) {
