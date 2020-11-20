@@ -10,21 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.fragment.app.Fragment;
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends BaseFragment {
 
     private static String TAG = SearchFragment.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-        Log.d(TAG,"onCreate()");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Search Fragment");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
+        setTitle("Search Fragment");
+        setIcon(null);
     }
 
     @Override

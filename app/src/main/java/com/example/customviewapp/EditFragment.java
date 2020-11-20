@@ -10,17 +10,15 @@ import android.view.ViewGroup;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-public class EditFragment extends Fragment {
+public class EditFragment extends BaseFragment {
 
     private static String TAG = EditFragment.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-        Log.d(TAG,"onCreate()");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Edit Fragment");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
+        setTitle("Edit Fragment");
+        setIcon(null);
     }
 
     @Override

@@ -9,20 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private static String TAG = HomeFragment.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-        Log.d(TAG,"onCreate()");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home Fragment");
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setIcon(null);
+        setTitle("Home Fragment");
+        setIcon(null);
     }
 
     @Override
@@ -33,7 +29,7 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.home_menu, menu);
         super.onCreateOptionsMenu(menu,inflater);
         Log.d(TAG,"onCreateOptionsMenu()");
     }

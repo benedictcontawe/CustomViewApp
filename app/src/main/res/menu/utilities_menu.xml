@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.ehorizon.junyverse.features.message.thread.view.ThreadActivity">
+
+    <item
+            android:id="@+id/delete_menu"
+            android:title="Delete"
+            app:showAsAction="never"/>
+
+    <item
+            android:id="@+id/leave_menu"
+            android:title="Leave"
+            app:showAsAction="never"/>
+
+    <item
+            android:id="@+id/silence_menu"
+            android:title="Silence"
+            app:showAsAction="never"/>
+
+</menu>

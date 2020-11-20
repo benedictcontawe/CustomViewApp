@@ -3,9 +3,11 @@ package com.example.customviewapp;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +17,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
     private Toolbar toolbar;
-    TextView txtToolbar;
+    private TextView txtToolbar;
+    private LinearLayout placeHolder;
     private ImageButton btnHome,btnSearch,btnEdit,btnDelete,btnUtilities;
 
     @Override
@@ -29,8 +32,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         toolbar.setTitle("Main Activity");
         //toolbar.setNavigationIcon();
         //toolbar.setNavigationOnClickListener();
+        toolbar.getMenu().clear();
+        //toolbar.inflateMenu(R.menu.delete_menu);
 
         txtToolbar = (TextView)findViewById(R.id.txtToolbar);
+        placeHolder = (LinearLayout)findViewById(R.id.placeHolder);
 
         btnHome = (ImageButton)findViewById(R.id.btnHome);
         btnSearch = (ImageButton)findViewById(R.id.btnSearch);
@@ -47,8 +53,44 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //getMenuInflater().inflate(R.menu.home_menu, menu);
         Log.d(TAG,"onCreateOptionsMenu()");
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+        /*
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Log.d(TAG,"Item 1 selected");
+                Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item2:
+                Log.d(TAG,"Item 2 selected");
+                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.item3:
+                Log.d(TAG,"Item 3 selected");
+                Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.subitem1:
+                Log.d(TAG,"Sub Item 1 selected");
+                Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.subitem2:
+                Log.d(TAG,"Sub Item 2 selected");
+                Toast.makeText(this, "Sub Item 2 selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.subitem3:
+                Log.d(TAG,"Sub Item 3 selected (Options Menu Disabled)");
+                Toast.makeText(this, "Sub Item 3 selected (Options Menu Disabled)", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        */
     }
 
     @Override
@@ -97,6 +139,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     public TextView getTxtToolbar() {
         return txtToolbar;
+    }
+
+    public LinearLayout getPlaceHolder() {
+        return placeHolder;
     }
 
     @Override

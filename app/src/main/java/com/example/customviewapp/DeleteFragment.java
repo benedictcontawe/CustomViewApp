@@ -1,5 +1,6 @@
 package com.example.customviewapp;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,13 +12,10 @@ import android.view.View.*;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-public class DeleteFragment extends Fragment implements OnClickListener {
+public class DeleteFragment extends BaseFragment implements OnClickListener {
 
     private static String TAG = DeleteFragment.class.getSimpleName();
-    private MainActivity mainActivity;
     private Button btnIncrease,btnDecrease;
     private int counter = -1;
     private MenuItem deleteSelected, deleteAll;
@@ -25,11 +23,8 @@ public class DeleteFragment extends Fragment implements OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-        Log.d(TAG,"onCreate()");
-        mainActivity = (MainActivity) getActivity();
-        mainActivity.getSupportActionBar().setTitle("Delete Fragment");
-        mainActivity.getSupportActionBar().setIcon(null);
+        setTitle("Delete Fragment");
+        setIcon(null);
     }
 
     @Override
@@ -49,15 +44,15 @@ public class DeleteFragment extends Fragment implements OnClickListener {
         switch (counter) {
             case -1:
                 inflater.inflate(R.menu.delete_menu, menu);
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Delete Fragment");
-                mainActivity.getToolbar().setNavigationIcon(null);
-                mainActivity.getToolbar().setNavigationOnClickListener(null);
+                setTitle("Delete Fragment");
+                setNavigationIcon((Drawable) null);
+                setNavigationOnClickListener(null);
                 break;
             default:
                 inflater.inflate(R.menu.delete_counter_menu, menu);
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(null);
-                mainActivity.getToolbar().setNavigationIcon(R.drawable.ic_arrow_back);
-                mainActivity.getToolbar().setNavigationOnClickListener(new OnClickListener() {
+                setTitle(null);
+                setNavigationIcon(R.drawable.ic_arrow_back);
+                setNavigationOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         resetToolBarState();
@@ -80,8 +75,8 @@ public class DeleteFragment extends Fragment implements OnClickListener {
                 btnDecrease.setVisibility(View.VISIBLE);
                 counter = 0;
                 reCreateOptionsMenu();
-                mainActivity.getTxtToolbar().setVisibility(View.VISIBLE);
-                mainActivity.getTxtToolbar().setText(String.valueOf(counter));
+                setToolbarVisibility(View.VISIBLE);
+                setToolbarText(String.valueOf(counter));
                 return true;
             case R.id.delete_selected:
                 Log.d(TAG,"onClick delete_selected");
@@ -98,17 +93,12 @@ public class DeleteFragment extends Fragment implements OnClickListener {
         }
     }
 
-    private void reCreateOptionsMenu() {
-        setHasOptionsMenu(false);
-        setHasOptionsMenu(true);
-    }
-
     private void resetToolBarState() {
         Log.d(TAG,"resetToolBarState()");
         btnIncrease.setVisibility(View.INVISIBLE);
         btnDecrease.setVisibility(View.INVISIBLE);
         counter = -1;
-        mainActivity.getTxtToolbar().setVisibility(View.INVISIBLE);
+        setToolbarVisibility(View.INVISIBLE);
         reCreateOptionsMenu();
     }
 
@@ -119,13 +109,13 @@ public class DeleteFragment extends Fragment implements OnClickListener {
                 Log.d(TAG,"onClick btnIncrease");
                 counter++;
                 setIcons();
-                mainActivity.getTxtToolbar().setText(String.valueOf(counter));
+                setToolbarText(String.valueOf(counter));
                 break;
             case R.id.btnDecrease:
                 Log.d(TAG,"onClick btnDecrease");
                 if (counter > 0) counter--;
                 setIcons();
-                mainActivity.getTxtToolbar().setText(String.valueOf(counter));
+                setToolbarText(String.valueOf(counter));
                 break;
             default:
                 Log.d(TAG,"onClick default");
