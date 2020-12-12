@@ -28,7 +28,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 Log.d(TAG,"onClick btnWebView");
                 startActivity(
                     WebActivity.newIntent(this@MainActivity,
-                        "https://www.google.com"
+                        //"https://www.google.com"
+                        txtURL.getText().toString()
                     )
                 )
             }
