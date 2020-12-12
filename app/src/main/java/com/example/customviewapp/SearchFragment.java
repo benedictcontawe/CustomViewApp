@@ -45,9 +45,12 @@ public class SearchFragment extends BaseFragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        MenuItem mSearchMenuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) mSearchMenuItem.getActionView();
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setQueryHint("Query Hint Search . . .");
+        searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        //searchView.setImageResource(R.drawable.ic_clear);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -59,6 +62,13 @@ public class SearchFragment extends BaseFragment {
             public boolean onQueryTextSubmit(String query) {
                 Log.d(TAG,"onQueryTextSubmit " + query);
                 return true;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+
+                return false;
             }
         });
     }
