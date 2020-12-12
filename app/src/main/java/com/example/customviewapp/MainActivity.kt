@@ -13,27 +13,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         private val TAG : String = MainActivity::class.java.simpleName
     }
 
-    private lateinit var actionSheetFragment : ActionSheetFragment;
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main);
         Log.d(TAG,"onCreate()");
 
-        btnActionSheet.setOnClickListener(this@MainActivity);
+        btnWebView.setOnClickListener(this@MainActivity);
     }
 
     override fun onClick(view : View) {
         when(view) {
-            btnActionSheet -> {
-                Log.d(TAG,"onClick btnActionSheet");
-                actionSheetFragment = ActionSheetFragment();
-                actionSheetFragment.setCancelable(true);
-                actionSheetFragment.show(getSupportFragmentManager(), TAG);
+            btnWebView -> {
+                Log.d(TAG,"onClick btnWebView");
+                startActivity(
+                    WebActivity.newIntent(this@MainActivity,
+                        "https://www.google.com"
+                    )
+                )
             }
             else -> {
                 Log.d(TAG,"onClick default");
-                Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this@MainActivity, "Default", Toast.LENGTH_SHORT).show();
             }
         }
     }

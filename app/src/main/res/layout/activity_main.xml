@@ -40,10 +40,10 @@
     <!--endregion-->
 
     <Button
-        android:id="@+id/btnActionSheet"
+        android:id="@+id/btnWebView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Show Action Sheet"
+        android:text="Show Web View"
         app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_top"
         app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"
         app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_trailing"
