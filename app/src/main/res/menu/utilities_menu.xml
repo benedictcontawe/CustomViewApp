@@ -4,17 +4,22 @@
         tools:context="com.ehorizon.junyverse.features.message.thread.view.ThreadActivity">
 
     <item
-            android:id="@+id/delete_menu"
-            android:title="Repair"
+            android:id="@+id/on_off_menu"
+            android:title="@string/off"
             app:showAsAction="never"/>
 
     <item
-            android:id="@+id/leave_menu"
-            android:title="Reset"
+            android:id="@+id/on_menu"
+            android:title="@string/on"
             app:showAsAction="never"/>
 
     <item
-            android:id="@+id/silence_menu"
+            android:id="@+id/off_menu"
+            android:title="@string/off"
+            app:showAsAction="never"/>
+
+    <item
+            android:id="@+id/exit_menu"
             android:title="Shutdown"
             app:showAsAction="never"/>
 

@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+
 public class DeleteFragment extends BaseFragment implements OnClickListener {
 
-    private static String TAG = DeleteFragment.class.getSimpleName();
+    private static final String TAG = DeleteFragment.class.getSimpleName();
     private Button btnIncrease,btnDecrease;
     private int counter = -1;
     private MenuItem deleteSelected, deleteAll;
@@ -40,7 +42,7 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NotNull Menu menu, @NotNull MenuInflater inflater) {
         switch (counter) {
             case -1:
                 inflater.inflate(R.menu.delete_menu, menu);

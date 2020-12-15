@@ -12,9 +12,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 import androidx.appcompat.widget.SearchView;
 
+import org.jetbrains.annotations.NotNull;
+
 public class SearchFragment extends BaseFragment {
 
-    private static String TAG = SearchFragment.class.getSimpleName();
+    private static final String TAG = SearchFragment.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class SearchFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
         Log.d(TAG,"onCreateOptionsMenu()");
@@ -43,7 +45,7 @@ public class SearchFragment extends BaseFragment {
     }
 
     @Override
-    public void onPrepareOptionsMenu(Menu menu) {
+    public void onPrepareOptionsMenu(@NotNull Menu menu) {
         super.onPrepareOptionsMenu(menu);
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();

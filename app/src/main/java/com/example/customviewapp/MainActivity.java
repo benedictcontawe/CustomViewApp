@@ -12,10 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    private static String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private MainViewModel mainViewModel;
     private Toolbar toolbar;
     private TextView txtToolbar;
     private LinearLayout placeHolder;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG,"onCreate()");
-
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Main Activity");
@@ -60,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
         /*
         switch (item.getItemId()) {
             case R.id.item1:
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 return super.onOptionsItemSelected(item);
         }
         */
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

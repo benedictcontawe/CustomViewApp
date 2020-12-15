@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+
 public class HomeFragment extends BaseFragment {
 
-    private static String TAG = HomeFragment.class.getSimpleName();
+    private static final String TAG = HomeFragment.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,16 +30,10 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.home_menu, menu);
         super.onCreateOptionsMenu(menu,inflater);
         Log.d(TAG,"onCreateOptionsMenu()");
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG,"onActivityCreated()");
     }
 
     @Override
@@ -72,4 +68,11 @@ public class HomeFragment extends BaseFragment {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.d(TAG,"onActivityCreated()");
+    }
+
 }

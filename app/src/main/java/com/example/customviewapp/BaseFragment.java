@@ -7,12 +7,14 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 
 abstract public class BaseFragment extends Fragment {
 
     private static String TAG = BaseFragment.class.getSimpleName();
-    private MainActivity mainActivity;
+    protected MainActivity mainActivity;
+    protected MainViewModel mainViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ abstract public class BaseFragment extends Fragment {
         setHasOptionsMenu(true);
         Log.d(TAG,"onCreate()");
         mainActivity = (MainActivity) getActivity(); //((AppCompatActivity)getActivity())
+        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     }
 
     public void setToolbarVisibility(int visibility) {
