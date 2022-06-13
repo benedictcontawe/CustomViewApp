@@ -9,14 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder> {
 
     /**Main */
-    private lateinit var context : Context
     private lateinit var calendarListener : CalendarListener
-
-    //private lateinit var list : List<CalendarViewModel>
     private lateinit var list : MutableList<CalendarViewModel>
 
-    constructor(context : Context?, calendarListener : CalendarListener) : super() {
-        this.context = context?:this.context
+    constructor(calendarListener : CalendarListener) : super() {
         this.calendarListener = calendarListener
     }
 
@@ -25,21 +21,21 @@ class CalendarAdapter : RecyclerView.Adapter<CalendarViewHolder> {
         list = mutableListOf<CalendarViewModel>()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : CalendarViewHolder {
-        val layoutInflater : LayoutInflater = LayoutInflater.from(context)
+    override fun onCreateViewHolder(parent : ViewGroup, viewType : Int) : CalendarViewHolder {
+        val layoutInflater : LayoutInflater = LayoutInflater.from(parent.getContext())
         val view : View = layoutInflater.inflate(R.layout.row_recycler_view_calendar, parent, false)
-        return CalendarViewHolder(context, view, calendarListener)
+        return CalendarViewHolder(parent.getContext(), view, calendarListener)
     }
 
-    override fun onBindViewHolder(holder: CalendarViewHolder, position: Int) {
+    override fun onBindViewHolder(holder : CalendarViewHolder, position : Int) {
         holder.bindDataToViewHolder(list[position], position)
     }
 
-    override fun getItemCount(): Int {
+    override fun getItemCount() : Int {
         return list.size
     }
 
-    fun setItems(items: MutableList<CalendarViewModel>) {
+    fun setItems(items : List<CalendarViewModel>) {
         list.clear()
         list.addAll(items)
         notifyDataSetChanged()

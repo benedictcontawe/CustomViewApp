@@ -5,14 +5,14 @@ import java.util.*
 class CalendarDateFormatter {
 
     companion object {
-        val arrayNumberMonth = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
-        val arrayMonth = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
-        val arrayFullMonth = arrayOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
-        val arrayDay = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09")
-        val arrayWeek = arrayOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
-        val arrayFullWeek = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
+        private val arrayNumberMonth = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12")
+        private val arrayMonth = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+        private val arrayFullMonth = arrayOf("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+        private val arrayDay = arrayOf("01", "02", "03", "04", "05", "06", "07", "08", "09")
+        private val arrayWeek = arrayOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
+        private val arrayFullWeek = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 
-        fun setMonth(month: Int?, isWord: Boolean, isFullWord: Boolean) : String {
+        fun setMonth(month : Int?, isWord : Boolean, isFullWord : Boolean) : String {
             val selectedMonth : Int
             when (month) {
                 null -> {
@@ -47,11 +47,11 @@ class CalendarDateFormatter {
             }
         }
 
-        private fun checkMaxDay(currentDay: Int, MaximumDay: Int): Int {
+        private fun checkMaxDay(currentDay : Int, MaximumDay : Int) : Int {
             return if (currentDay <= MaximumDay) currentDay else 0
         }
 
-        /**getDate : Int return YYYYMMDD*/
+        /** getDate : Int return YYYYMMDD */
         fun getDate(month : Int, day : Int, year : Int) : Int {
             val subMonth = setMonth(month - 1, false, false)
             val subDay = setDay(day, true)
@@ -60,7 +60,7 @@ class CalendarDateFormatter {
 
         private lateinit var listInit : MutableList<CalendarModel>
         private lateinit var list : MutableList<CalendarViewModel>
-        fun setScrollableCalendar(setMaxPastMonth: Int, setDayOfMonth : Int): MutableList<CalendarViewModel> {
+        fun setScrollableCalendar(setMaxPastMonth : Int, setDayOfMonth : Int) : MutableList<CalendarViewModel> {
             //region First Set-Up for Calendar Model
             val previousDate: Calendar = Calendar.getInstance()
             val currentDate: Calendar = Calendar.getInstance()

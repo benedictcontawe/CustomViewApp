@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 class CustomBottomOffsetDecoration : RecyclerView.ItemDecoration {
 
-    private var bottomItemOffset : Int? = null
+    private val bottomItemOffset : Int
 
     constructor(bottomItemOffset : Int) {
         this.bottomItemOffset = bottomItemOffset
     }
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(outRect : Rect, view : View, parent : RecyclerView, state : RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
         val dataSize = state.getItemCount()
         val position = parent.getChildAdapterPosition(view)
@@ -21,7 +21,5 @@ class CustomBottomOffsetDecoration : RecyclerView.ItemDecoration {
         } else {
             outRect.set(0, 0, 0, 0)
         }
-
     }
-
 }

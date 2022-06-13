@@ -3,25 +3,22 @@ package com.example.customscrollablecalendar
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+    private lateinit var viewModel : MainViewModel
     private lateinit var calendarFragment : CalendarFragment
 
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        onSetEvents()
+        viewModel = ViewModelProvider(this@MainActivity).get(MainViewModel::class.java)
     }
 
-    private fun onSetEvents() {
-        btn_show.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View) {
-        when(v.getId()) {
+    override fun onClick(view : View) {
+        when(view.getId()) {
             btn_show.getId() -> {
                 showCalendar()
             }
@@ -31,11 +28,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onResume() {
         super.onResume()
         showCalendar()
+        btn_show.setOnClickListener(this@MainActivity)
     }
 
     override fun onPause() {
         super.onPause()
         getSupportFragmentManager().beginTransaction().remove(calendarFragment).commit()
+        btn_show.setOnClickListener(null)
     }
 
     private fun showCalendar() {

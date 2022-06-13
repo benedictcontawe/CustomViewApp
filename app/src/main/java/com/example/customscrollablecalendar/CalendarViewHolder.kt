@@ -9,11 +9,10 @@ import com.example.customscrollablecalendar.CalendarDateFormatter.Companion.setM
 import kotlinx.android.synthetic.main.row_recycler_view_calendar.view.*
 
 class CalendarViewHolder : RecyclerView.ViewHolder {
-
-    /**Main */
+    /** Main */
     private lateinit var context: Context
     private lateinit var calendarListener: CalendarListener
-    /**Data */
+    /** Data */
     private var itemTextTypeMonth: TextView
     private var itemTextTypeYear: TextView
     private var itemTextType1stWeekDay: TextView
@@ -23,7 +22,7 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
     private var itemTextType5thWeekDay: TextView
     private var itemTextType6thWeekDay: TextView
     private var itemTextType7thWeekDay: TextView
-    /**With Events and Others */
+    /** With Events and Others */
     private var itemTextType1stDay: TextView
     private var itemTextType2ndDay: TextView
     private var itemTextType3rdDay: TextView
@@ -180,7 +179,7 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         //endregion
     }
 
-    fun bindDataToViewHolder(item: CalendarViewModel, position: Int) {
+    fun bindDataToViewHolder(item : CalendarViewModel, position : Int) {
         //region Input Data
         itemTextTypeMonth.text = setMonth(item.calendarMonth,true,true)
         itemTextTypeYear.text =  item.calendarYear.toString()
@@ -240,6 +239,7 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         resetEvents()
         setDayVisibility()
         setEvents(item, position)
+        item.event
         //endregion
     }
 
@@ -249,17 +249,19 @@ class CalendarViewHolder : RecyclerView.ViewHolder {
         }
     }
 
-    private fun setDayVisibility() {
-        //set Day View visibility
+    private fun setDayVisibility() { //set Day View visibility
         itemDayList.filter { it.text == "0" && it.visibility != View.INVISIBLE }.map { it.visibility = View.INVISIBLE }
         itemDayList.filter { it.text != "0" && it.visibility != View.VISIBLE }.map { it.visibility = View.VISIBLE }
+    }
+
+    private fun setAlpha() {
+        itemDayList.filter { it.text == "0" && it.visibility != View.INVISIBLE  }.map { it.setAlpha(0.5f) }
     }
 
     private fun setEvents(item : CalendarViewModel, position : Int) {
         itemDayList.filter {
             it.text != "0"
-        }.map {
-            /* On Click */
+        }.map { /* On Click */
             it.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(view: View) {
                     Log.d("onClick", "${item.calendarMonth} ${it.text} ${item.calendarYear} ${CalendarDateFormatter.getDate(item.calendarMonth?:0, it.text.toString().toInt(), item.calendarYear?:0)}")
