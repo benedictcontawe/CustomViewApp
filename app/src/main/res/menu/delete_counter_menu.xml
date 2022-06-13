@@ -5,14 +5,14 @@
 
     <item
         android:id="@+id/delete_selected"
-        android:title="Yes"
+        android:title="@string/yes"
         android:icon="@drawable/ic_delete_selected"
         android:visible="false"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/delete_all"
-        android:title="Delete All"
+        android:title="@string/delete_all"
         android:icon="@drawable/ic_delete_all"
         app:showAsAction="always"/>
 

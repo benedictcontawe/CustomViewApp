@@ -1,6 +1,5 @@
 package com.example.customviewapp;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,14 +11,12 @@ import android.view.View.*;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-
 import org.jetbrains.annotations.NotNull;
 
 public class DeleteFragment extends BaseFragment implements OnClickListener {
 
     private static final String TAG = DeleteFragment.class.getSimpleName();
     private Button btnIncrease,btnDecrease;
-    private int counter = -1;
     private MenuItem deleteSelected, deleteAll;
 
     @Override
@@ -43,11 +40,12 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
 
     @Override
     public void onCreateOptionsMenu(@NotNull Menu menu, @NotNull MenuInflater inflater) {
-        switch (counter) {
+        Log.d(TAG,"onCreateOptionsMenu()");
+        switch (mainViewModel.getCounterInteger()) {
             case -1:
                 inflater.inflate(R.menu.delete_menu, menu);
                 setTitle("Delete Fragment");
-                setNavigationIcon((Drawable) null);
+                setNavigationIcon(null);
                 setNavigationOnClickListener(null);
                 break;
             default:
@@ -63,7 +61,6 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
                 break;
         }
         super.onCreateOptionsMenu(menu, inflater);
-        Log.d(TAG,"onCreateOptionsMenu()");
         deleteSelected = (MenuItem) menu.findItem(R.id.delete_selected);
         deleteAll = (MenuItem) menu.findItem(R.id.delete_all);
     }
@@ -75,14 +72,14 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
                 Log.d(TAG,"onClick action_delete");
                 btnIncrease.setVisibility(View.VISIBLE);
                 btnDecrease.setVisibility(View.VISIBLE);
-                counter = 0;
+                mainViewModel.setCounter(0);
                 reCreateOptionsMenu();
                 setToolbarVisibility(View.VISIBLE);
-                setToolbarText(String.valueOf(counter));
+                setToolbarText(mainViewModel.getCounterString());
                 return true;
             case R.id.delete_selected:
                 Log.d(TAG,"onClick delete_selected");
-                Toast.makeText(getContext(), "Delete Selected " + counter, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Delete Selected " + mainViewModel.getCounterString(), Toast.LENGTH_SHORT).show();
                 resetToolBarState();
                 return true;
             case R.id.delete_all:
@@ -95,13 +92,12 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
         }
     }
 
-    private void resetToolBarState() {
+    protected void resetToolBarState() {
         Log.d(TAG,"resetToolBarState()");
         btnIncrease.setVisibility(View.INVISIBLE);
         btnDecrease.setVisibility(View.INVISIBLE);
-        counter = -1;
-        setToolbarVisibility(View.INVISIBLE);
-        reCreateOptionsMenu();
+        mainViewModel.decrementCounter();
+        super.resetToolBarState();
     }
 
     @Override
@@ -109,15 +105,15 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
         switch (view.getId()) {
             case R.id.btnIncrease:
                 Log.d(TAG,"onClick btnIncrease");
-                counter++;
+                mainViewModel.incrementCounter();
                 setIcons();
-                setToolbarText(String.valueOf(counter));
+                setToolbarText(mainViewModel.getCounterString());
                 break;
             case R.id.btnDecrease:
                 Log.d(TAG,"onClick btnDecrease");
-                if (counter > 0) counter--;
+                if (mainViewModel.isGreaterThanCounter(0)) mainViewModel.decrementCounter();
                 setIcons();
-                setToolbarText(String.valueOf(counter));
+                setToolbarText(mainViewModel.getCounterString());
                 break;
             default:
                 Log.d(TAG,"onClick default");
@@ -126,7 +122,7 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
     }
 
     private void setIcons() {
-        if (counter == 0) {
+        if (mainViewModel.isEqualCounter(0)) {
             deleteSelected.setVisible(false);
             deleteAll.setVisible(true);
         } else {

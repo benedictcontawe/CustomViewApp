@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import org.jetbrains.annotations.NotNull;
 
 public class EditFragment extends BaseFragment {
@@ -18,7 +17,8 @@ public class EditFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Edit Fragment");
-        setIcon(null);
+        setIcon(R.drawable.ic_edit_unpressed);
+        resetToolBarState();
     }
 
     @Override
@@ -29,14 +29,14 @@ public class EditFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(@NotNull Menu menu, @NotNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
         Log.d(TAG,"onCreateOptionsMenu()");
+        setNavigationIcon(null);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         Log.d(TAG,"onActivityCreated()");
+        super.onActivityCreated(savedInstanceState);
     }
-
 }

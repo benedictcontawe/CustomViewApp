@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 import androidx.appcompat.widget.SearchView;
-
 import org.jetbrains.annotations.NotNull;
 
 public class SearchFragment extends BaseFragment {
@@ -23,6 +22,7 @@ public class SearchFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         setTitle("Search Fragment");
         setIcon(null);
+        resetToolBarState();
     }
 
     @Override
@@ -33,15 +33,16 @@ public class SearchFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
+        Log.d(TAG,"onCreateOptionsMenu()");
+        setNavigationIcon(null);
         inflater.inflate(R.menu.search_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
-        Log.d(TAG,"onCreateOptionsMenu()");
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         Log.d(TAG,"onActivityCreated()");
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
@@ -69,7 +70,7 @@ public class SearchFragment extends BaseFragment {
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-
+                Log.d(TAG,"onClose");
                 return false;
             }
         });

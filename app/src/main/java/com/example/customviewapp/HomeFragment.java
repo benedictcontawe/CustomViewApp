@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import org.jetbrains.annotations.NotNull;
 
 public class HomeFragment extends BaseFragment {
@@ -21,6 +20,7 @@ public class HomeFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         setTitle("Home Fragment");
         setIcon(null);
+        resetToolBarState();
     }
 
     @Override
@@ -31,9 +31,10 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
+        Log.d(TAG,"onCreateOptionsMenu()");
+        setNavigationIcon(null);
         inflater.inflate(R.menu.home_menu, menu);
         super.onCreateOptionsMenu(menu,inflater);
-        Log.d(TAG,"onCreateOptionsMenu()");
     }
 
     @Override
@@ -62,7 +63,7 @@ public class HomeFragment extends BaseFragment {
             case R.id.subitem3:
                 Log.d(TAG,"Sub Item 3 selected (Options Menu Disabled)");
                 Toast.makeText(getContext(), "Sub Item 3 selected (Options Menu Disabled)", Toast.LENGTH_SHORT).show();
-                setHasOptionsMenu(false);
+                disableOptionsMenu();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -74,5 +75,4 @@ public class HomeFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         Log.d(TAG,"onActivityCreated()");
     }
-
 }

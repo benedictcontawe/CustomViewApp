@@ -54,9 +54,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { Log.d(TAG,"onCreateOptionsMenu()");
         //getMenuInflater().inflate(R.menu.home_menu, menu);
-        Log.d(TAG,"onCreateOptionsMenu()");
         return super.onCreateOptionsMenu(menu);
     }
 

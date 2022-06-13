@@ -20,7 +20,7 @@
 
     <item
             android:id="@+id/exit_menu"
-            android:title="Shutdown"
+            android:title="@string/shutdown"
             app:showAsAction="never"/>
 
 </menu>

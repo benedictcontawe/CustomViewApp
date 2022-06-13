@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">CustomAppCompatButton</string>
+    <string name="delete">Delete</string>
+    <string name="delete_all">Delete All</string>
     <string name="on">On</string>
     <string name="off">Off</string>
+    <string name="item_1">Item 1</string>
+    <string name="item_2">Item 2</string>
+    <string name="item_3">Item 3</string>
+    <string name="search">Search</string>
+    <string name="sub_item_1">Sub Item 1</string>
+    <string name="sub_item_2">Sub Item 2</string>
+    <string name="shutdown">Shutdown</string>
+    <string name="yes">Yes</string>
+    <string name="toolbar_title">Toolbar Title</string>
 </resources>

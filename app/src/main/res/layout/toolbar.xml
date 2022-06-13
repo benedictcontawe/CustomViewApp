@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Toolbar Title"
+            android:hint="@string/toolbar_title"
             android:textSize="18sp"
             android:textColor="@color/white"
             android:visibility="gone" />
