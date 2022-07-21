@@ -2,7 +2,6 @@ package com.example.customviewapp;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,126 +11,36 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private MainViewModel mainViewModel;
-    private Toolbar toolbar;
-    private TextView txtToolbar;
-    private LinearLayout placeHolder;
-    private BottomNavigationView bottomNavigationView;
+    private MainViewModel viewModel;
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
+    private ViewPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG,"onCreate()");
-        mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Main Activity");
-        //toolbar.setNavigationIcon();
-        //toolbar.setNavigationOnClickListener();
-        toolbar.getMenu().clear();
-        //toolbar.inflateMenu(R.menu.delete_menu);
-
-        txtToolbar = (TextView)findViewById(R.id.txtToolbar);
-        placeHolder = (LinearLayout)findViewById(R.id.placeHolder);
-
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) { Log.d(TAG,"onCreateOptionsMenu()");
-        //getMenuInflater().inflate(R.menu.home_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        /*
-        switch (item.getItemId()) {
-            case R.id.item1:
-                Log.d(TAG,"Item 1 selected");
-                Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item2:
-                Log.d(TAG,"Item 2 selected");
-                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.item3:
-                Log.d(TAG,"Item 3 selected");
-                Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.subitem1:
-                Log.d(TAG,"Sub Item 1 selected");
-                Toast.makeText(this, "Sub Item 1 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.subitem2:
-                Log.d(TAG,"Sub Item 2 selected");
-                Toast.makeText(this, "Sub Item 2 selected", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.subitem3:
-                Log.d(TAG,"Sub Item 3 selected (Options Menu Disabled)");
-                Toast.makeText(this, "Sub Item 3 selected (Options Menu Disabled)", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        */
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.home: Log.d(TAG,"onNavigationItemSelected home");
-                getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameLayout,new HomeFragment())
-                    .commitNow();
-                return true;
-            case R.id.search: Log.d(TAG,"onNavigationItemSelected search");
-                getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameLayout,new SearchFragment())
-                    .commitNow();
-                return true;
-            case R.id.edit: Log.d(TAG,"onNavigationItemSelected edit");
-                getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameLayout,new EditFragment())
-                    .commitNow();
-                return true;
-            case R.id.delete: Log.d(TAG,"onNavigationItemSelected delete");
-                getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout,new DeleteFragment())
-                    .commitNow();
-                return true;
-            case R.id.utilities: Log.d(TAG,"onNavigationItemSelected utilities");
-                getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameLayout,new UtilitiesFragment())
-                    .commitNow();
-                return true;
-            default:
-                Log.d(TAG,"onNavigationItemSelected default");
-                Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
-                return false;
-        }
-    }
-
-    public Toolbar getToolbar() {
-        return toolbar;
-    }
-
-    public TextView getTxtToolbar() {
-        return txtToolbar;
-    }
-
-    public LinearLayout getPlaceHolder() {
-        return placeHolder;
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        viewPager = (ViewPager2)findViewById(R.id.view_pager);
+        adapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), viewModel.getViewPagerList());
+        viewPager.setAdapter(adapter);
+        new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(adapter.getTitle(position));
+            }
+        }).attach();
     }
 
     @Override
