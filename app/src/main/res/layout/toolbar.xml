@@ -25,7 +25,8 @@
             android:hint="@string/toolbar_title"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <LinearLayout
                 android:id="@+id/placeHolder"
@@ -41,7 +42,7 @@
                     android:id="@+id/placeHolderPhoto"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/home_selector"/>
+                    android:src="@drawable/ic_home"/>
 
             <LinearLayout
                     android:layout_width="wrap_content"

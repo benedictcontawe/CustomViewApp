@@ -17,7 +17,7 @@ public class EditFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Edit Fragment");
-        setIcon(R.drawable.ic_edit_unpressed);
+        setIcon(R.drawable.ic_edit);
         resetToolBarState();
     }
 

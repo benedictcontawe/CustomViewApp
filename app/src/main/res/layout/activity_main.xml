@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/coordinator_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:background="@color/white"
+        android:fitsSystemWindows="false">
     <!--region Guide lines-->
     <!--region Vertical Guide lines-->
     <androidx.constraintlayout.widget.Guideline
@@ -60,8 +61,8 @@
     <!--endregion-->
     <!--endregion-->
     <include
-        android:id="@+id/include"
-        layout="@layout/toolbar" />
+            android:id="@+id/include"
+            layout="@layout/toolbar" />
 
     <FrameLayout
             android:id="@+id/frameLayout"
@@ -72,73 +73,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/constraint_guideline_horizontal_90"/>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnHome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:background="@drawable/home_selector"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_91"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_2"
-        app:layout_constraintBottom_toBottomOf="@id/constraint_guideline_horizontal_99"/>
-
-    <ImageButton
-        android:id="@+id/btnSearch"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:background="@drawable/search_selector"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_91"
-        app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_2"
-        app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_4"
-        app:layout_constraintBottom_toBottomOf="@id/constraint_guideline_horizontal_99"/>
-
-    <ImageButton
-        android:id="@+id/btnEdit"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:background="@drawable/edit_selector"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_91"
-        app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_4"
-        app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_6"
-        app:layout_constraintBottom_toBottomOf="@id/constraint_guideline_horizontal_99"/>
-
-    <ImageButton
-        android:id="@+id/btnDelete"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:background="@drawable/delete_selector"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_91"
-        app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_6"
-        app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_8"
-        app:layout_constraintBottom_toBottomOf="@id/constraint_guideline_horizontal_99"/>
-
-    <ImageButton
-        android:id="@+id/btnUtilities"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="fitXY"
-        android:background="@drawable/utilities_selector"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_91"
-        app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/constraint_guideline_horizontal_99"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            app:labelVisibilityMode="auto"
+            app:menu="@menu/bottom_navigation_menu"
+            app:itemIconTint="@drawable/bottom_navigation_color"
+            app:itemTextColor="@drawable/bottom_navigation_color"
+            app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_90"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

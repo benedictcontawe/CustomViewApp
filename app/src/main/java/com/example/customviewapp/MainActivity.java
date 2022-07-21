@@ -4,24 +4,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private MainViewModel mainViewModel;
     private Toolbar toolbar;
     private TextView txtToolbar;
     private LinearLayout placeHolder;
-    private ImageButton btnHome,btnSearch,btnEdit,btnDelete,btnUtilities;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +41,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         txtToolbar = (TextView)findViewById(R.id.txtToolbar);
         placeHolder = (LinearLayout)findViewById(R.id.placeHolder);
 
-        btnHome = (ImageButton)findViewById(R.id.btnHome);
-        btnSearch = (ImageButton)findViewById(R.id.btnSearch);
-        btnEdit = (ImageButton)findViewById(R.id.btnEdit);
-        btnDelete = (ImageButton)findViewById(R.id.btnDelete);
-        btnUtilities = (ImageButton)findViewById(R.id.btnUtilities);
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
 
-        btnHome.setOnClickListener(this);
-        btnSearch.setOnClickListener(this);
-        btnEdit.setOnClickListener(this);
-        btnDelete.setOnClickListener(this);
-        btnUtilities.setOnClickListener(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -95,42 +88,37 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnHome:
-                Log.d(TAG,"onClick btnHome");
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home: Log.d(TAG,"onNavigationItemSelected home");
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new HomeFragment())
-                        .commitNow();
-                break;
-            case R.id.btnSearch:
-                Log.d(TAG,"onClick btnSearch");
+                    .replace(R.id.frameLayout,new HomeFragment())
+                    .commitNow();
+                return true;
+            case R.id.search: Log.d(TAG,"onNavigationItemSelected search");
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new SearchFragment())
-                        .commitNow();
-                break;
-            case R.id.btnEdit:
-                Log.d(TAG,"onClick btnEdit");
+                    .replace(R.id.frameLayout,new SearchFragment())
+                    .commitNow();
+                return true;
+            case R.id.edit: Log.d(TAG,"onNavigationItemSelected edit");
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new EditFragment())
-                        .commitNow();
-                break;
-            case R.id.btnDelete:
-                Log.d(TAG,"onClick btnDelete");
+                    .replace(R.id.frameLayout,new EditFragment())
+                    .commitNow();
+                return true;
+            case R.id.delete: Log.d(TAG,"onNavigationItemSelected delete");
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new DeleteFragment())
-                        .commitNow();
-                break;
-            case R.id.btnUtilities:
-                Log.d(TAG,"onClick btnUtilities");
+                .replace(R.id.frameLayout,new DeleteFragment())
+                    .commitNow();
+                return true;
+            case R.id.utilities: Log.d(TAG,"onNavigationItemSelected utilities");
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout,new UtilitiesFragment())
-                        .commitNow();
-                break;
+                    .replace(R.id.frameLayout,new UtilitiesFragment())
+                    .commitNow();
+                return true;
             default:
-                Log.d(TAG,"onClick default");
+                Log.d(TAG,"onNavigationItemSelected default");
                 Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
-                break;
+                return false;
         }
     }
 
