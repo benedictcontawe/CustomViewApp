@@ -15,12 +15,14 @@
     </style>
     <style name="CustomChipFilterStyle" parent="@style/Widget.MaterialComponents.Chip.Filter" >
         <item name="android:textColor">@color/selector_chip_text_color</item>
+        <item name="android:textSize">15sp</item>
         <item name="chipBackgroundColor">@color/selector_chip_background</item>
         <item name="checkedIconTint">@color/white</item>
         <item name="rippleColor">@color/pink</item>
     </style>
     <style name="CustomChipEntryStyle" parent="@style/Widget.MaterialComponents.Chip.Entry" >
         <item name="android:textColor">@color/selector_chip_text_color</item>
+        <item name="android:textSize">15sp</item>
         <item name="chipBackgroundColor">@color/selector_chip_background</item>
         <item name="checkedIconTint">@color/white</item>
         <item name="rippleColor">@color/pink</item>
