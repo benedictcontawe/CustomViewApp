@@ -3,6 +3,8 @@ package com.example.customviewapp;
 import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.google.android.material.chip.Chip;
+
 import java.util.ArrayList;
 import java.util.List;
 

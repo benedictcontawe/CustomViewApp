@@ -2,20 +2,24 @@ package com.example.customviewapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ChipGroup.OnCheckedStateChangeListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private MainViewModel viewModel;
-    private TabLayout tabLayout;
+    private ChipGroup chipGroup;
+    private Chip chipHome, chipSearch, chopEdit, chipDelete, chipUtilities, chipClose;
     private ViewPager2 viewPager;
     private ViewPagerAdapter adapter;
 
@@ -25,16 +29,52 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG,"onCreate()");
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        chipGroup = (ChipGroup)findViewById(R.id.chip_group);
+        chipHome = (Chip)findViewById(R.id.chip_home);
+        chipSearch = (Chip)findViewById(R.id.chip_search);
+        chopEdit = (Chip)findViewById(R.id.chip_edit);
+        chipDelete = (Chip)findViewById(R.id.chip_delete);
+        chipUtilities = (Chip)findViewById(R.id.chip_utilities);
+        chipClose = (Chip)findViewById(R.id.chip_close);
         viewPager = (ViewPager2)findViewById(R.id.view_pager);
+        chipClose.setOnCloseIconClickListener(this);
+        chipGroup.setOnCheckedStateChangeListener(this);
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), viewModel.getViewPagerList());
         viewPager.setAdapter(adapter);
-        new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText(adapter.getTitle(position));
+        viewPager.setUserInputEnabled(true);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (chipClose == view) {
+            Log.d(TAG,"Chip close");
+        }
+    }
+
+    @Override
+    public void onCheckedChanged(@NonNull ChipGroup group, @NonNull List<Integer> checkedIds) {
+        for (Integer checkedId : checkedIds) {
+            Chip chip = group.findViewById(checkedId);
+            Log.d(TAG,"Chip " + chip.getText() + " " + chip.isChecked());
+            if (chipGroup == group && chipHome == chip) {
+                Log.d(TAG,"Chip Home");
+                viewPager.setCurrentItem(0, true);
+            } else if (chipGroup == group && chipSearch == chip) {
+                Log.d(TAG,"Chip Search");
+                viewPager.setCurrentItem(1, true);
+            } else if (chipGroup == group && chopEdit == chip) {
+                Log.d(TAG,"Chip Edit");
+                viewPager.setCurrentItem(2, true);
+            } else if (chipGroup == group && chipDelete == chip) {
+                Log.d(TAG,"Chip Delete");
+                viewPager.setCurrentItem(3, true);
+            } else if (chipGroup == group && chipUtilities == chip) {
+                Log.d(TAG,"Chip Utilities");
+                viewPager.setCurrentItem(4, true);
+            } else {
+                Log.d(TAG,"Chip Unknown");
             }
-        }).attach();
+        }
     }
 
     @Override

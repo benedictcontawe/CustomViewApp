@@ -15,5 +15,6 @@
     <string name="shutdown">Shutdown</string>
     <string name="toolbar_title">Toolbar Title</string>
     <string name="utilities">Utilities</string>
+    <string name="close">Close</string>
     <string name="yes">Yes</string>
 </resources>
