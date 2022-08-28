@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import org.jetbrains.annotations.NotNull;
 
 public class SearchFragment extends BaseFragment {

@@ -57,19 +57,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Chip chip = group.findViewById(checkedId);
             Log.d(TAG,"Chip " + chip.getText() + " " + chip.isChecked());
             if (chipGroup == group && chipHome == chip) {
-                Log.d(TAG,"Chip Home");
                 viewPager.setCurrentItem(0, true);
             } else if (chipGroup == group && chipSearch == chip) {
-                Log.d(TAG,"Chip Search");
                 viewPager.setCurrentItem(1, true);
             } else if (chipGroup == group && chopEdit == chip) {
-                Log.d(TAG,"Chip Edit");
                 viewPager.setCurrentItem(2, true);
             } else if (chipGroup == group && chipDelete == chip) {
-                Log.d(TAG,"Chip Delete");
                 viewPager.setCurrentItem(3, true);
             } else if (chipGroup == group && chipUtilities == chip) {
-                Log.d(TAG,"Chip Utilities");
                 viewPager.setCurrentItem(4, true);
             } else {
                 Log.d(TAG,"Chip Unknown");
