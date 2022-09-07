@@ -5,3 +5,5 @@
 - [Add a background image to shape in XML Android](https://stackoverflow.com/questions/21002224/add-a-background-image-to-shape-in-xml-android)
 
 - [Android P: Chips and ChipGroup](https://www.digitalocean.com/community/tutorials/android-p-chips-chipgroup)
+
+- [ShapeableImageView with StrokeWidth, Stroke trimmed on all four side](https://stackoverflow.com/questions/62341037/shapeableimageview-with-strokewidth-stroke-trimmed-on-all-four-side)
