@@ -31,7 +31,8 @@ public class MainViewModel extends AndroidViewModel {
     }
 
     public void decrementCounter() {
-        this.counter = -1; //this.counter--;
+        if (isGreaterThanCounter(0))
+            this.counter--;
     }
 
     public Boolean isEqualCounter(int value) {
