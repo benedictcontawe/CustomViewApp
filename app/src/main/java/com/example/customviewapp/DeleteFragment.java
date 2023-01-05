@@ -96,7 +96,8 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
         Log.d(TAG,"resetToolBarState()");
         btnIncrease.setVisibility(View.INVISIBLE);
         btnDecrease.setVisibility(View.INVISIBLE);
-        mainViewModel.decrementCounter();
+        mainViewModel.setCounter(0);
+        setToolbarText(mainViewModel.getCounterString());
         super.resetToolBarState();
     }
 
@@ -111,7 +112,7 @@ public class DeleteFragment extends BaseFragment implements OnClickListener {
                 break;
             case R.id.btnDecrease:
                 Log.d(TAG,"onClick btnDecrease");
-                if (mainViewModel.isGreaterThanCounter(0)) mainViewModel.decrementCounter();
+                mainViewModel.decrementCounter();
                 setIcons();
                 setToolbarText(mainViewModel.getCounterString());
                 break;

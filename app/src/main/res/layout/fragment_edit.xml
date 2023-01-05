@@ -17,4 +17,41 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+    <EditText
+            android:id="@+id/edtCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Text Content to Copy"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnCopy"
+            app:layout_constraintBottom_toTopOf="@id/btnPaste" />
+
+    <Button
+            android:id="@+id/btnCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copy"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnPaste" />
+
+    <TextView
+            android:id="@+id/txtPaste"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/btnCopy"
+            app:layout_constraintStart_toStartOf="@id/edtCopy"
+            app:layout_constraintEnd_toEndOf="@id/edtCopy"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+            android:id="@+id/btnPaste"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Paste"
+            app:layout_constraintTop_toBottomOf="@id/btnCopy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
