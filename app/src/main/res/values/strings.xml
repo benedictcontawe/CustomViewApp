@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">CustomAppCompatButton</string>
+    <string name="app_name">Per-App Language Preferences</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="per_app_language_preferences">Per-App Language Preferences</string>
 </resources>

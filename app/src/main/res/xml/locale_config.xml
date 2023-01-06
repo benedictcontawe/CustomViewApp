@@ -1,0 +1,10 @@
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--region English -->
+    <locale android:name="en"/>            <!-- English -->
+    <locale android:name="en-GB"/>         <!-- English (United Kingdom) -->
+    <!-- endregion -->
+    <locale android:name="fr"/>            <!-- French -->
+    <locale android:name="ja"/>            <!-- Japanese -->
+    <locale android:name="zh-Hans-MO"/>    <!-- Chinese (Macao) in Simplified Script -->
+    <locale android:name="zh-Hant-TW"/>    <!-- Chinese (Taiwan) in Traditional Script -->
+</locale-config>
