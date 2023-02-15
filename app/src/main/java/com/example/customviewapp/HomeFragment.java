@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class HomeFragment extends BaseFragment {
 
     private static final String TAG = HomeFragment.class.getSimpleName();
@@ -22,8 +25,8 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        Log.d(TAG,"onActivityCreated()");
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"onViewCreated()");
+        super.onViewCreated(view, savedInstanceState);
     }
 }

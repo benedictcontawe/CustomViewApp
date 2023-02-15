@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class UtilitiesFragment extends BaseFragment {
 
     private static final String TAG = UtilitiesFragment.class.getSimpleName();
@@ -22,9 +25,9 @@ public class UtilitiesFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        Log.d(TAG,"onActivityCreated()");
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"onViewCreated()");
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

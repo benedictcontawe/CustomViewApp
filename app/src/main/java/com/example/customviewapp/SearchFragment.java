@@ -8,6 +8,9 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import org.jetbrains.annotations.NotNull;
 
 public class SearchFragment extends BaseFragment {
@@ -33,8 +36,8 @@ public class SearchFragment extends BaseFragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        Log.d(TAG,"onActivityCreated()");
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"onViewCreated()");
+        super.onViewCreated(view, savedInstanceState);
     }
 }
