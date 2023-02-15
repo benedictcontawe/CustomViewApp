@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:context="com.ehorizon.junyverse.features.message.thread.view.ThreadActivity">
+        tools:context=".MainActivity" >
 
     <item
             android:id="@+id/on_off_menu"
@@ -22,5 +22,4 @@
             android:id="@+id/exit_menu"
             android:title="@string/shutdown"
             app:showAsAction="never"/>
-
 </menu>

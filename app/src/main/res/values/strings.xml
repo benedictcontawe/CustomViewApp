@@ -1,19 +1,26 @@
 <resources>
     <string name="app_name">CustomAppCompatButton</string>
+    <string name="decrease">Decrease</string>
     <string name="delete">Delete</string>
     <string name="delete_all">Delete All</string>
+    <string name="delete_fragment">Delete Fragment</string>
     <string name="edit">Edit</string>
+    <string name="edit_fragment">Edit Fragment</string>
     <string name="home">Home</string>
+    <string name="home_fragment">Home Fragment</string>
     <string name="on">On</string>
     <string name="off">Off</string>
+    <string name="increase">Increase</string>
     <string name="item_1">Item 1</string>
     <string name="item_2">Item 2</string>
     <string name="item_3">Item 3</string>
     <string name="search">Search</string>
+    <string name="search_fragment">Search Fragment</string>
     <string name="sub_item_1">Sub Item 1</string>
     <string name="sub_item_2">Sub Item 2</string>
     <string name="shutdown">Shutdown</string>
     <string name="toolbar_title">Toolbar Title</string>
     <string name="utilities">Utilities</string>
+    <string name="utilities_fragment">Utilities Fragment</string>
     <string name="yes">Yes</string>
 </resources>
