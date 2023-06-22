@@ -2,6 +2,8 @@ package com.example.customviewapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,14 +29,21 @@ public class MainActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         viewPager = (ViewPager2)findViewById(R.id.view_pager);
+        //tabLayout.setSelectedTabIndicatorColor();
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), viewModel.getViewPagerList());
         viewPager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 tab.setText(adapter.getTitle(position));
+                //tab.setCustomView(getRelativeLayout());
             }
         }).attach();
+    }
+
+    private RelativeLayout getRelativeLayout() {
+        return (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_layout, tabLayout, false);
+
     }
 
     @Override
