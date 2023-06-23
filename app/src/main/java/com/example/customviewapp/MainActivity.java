@@ -1,8 +1,11 @@
 package com.example.customviewapp;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -29,21 +32,31 @@ public class MainActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         viewPager = (ViewPager2)findViewById(R.id.view_pager);
-        //tabLayout.setSelectedTabIndicatorColor();
+        //setTabLayout();
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), viewModel.getViewPagerList());
         viewPager.setAdapter(adapter);
         new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText(adapter.getTitle(position));
                 //tab.setCustomView(getRelativeLayout());
+                tab.setText(adapter.getTitle(position));
             }
         }).attach();
     }
 
-    private RelativeLayout getRelativeLayout() {
-        return (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_layout, tabLayout, false);
-
+    private void setTabLayout() {
+        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.white));
+        //region Adding Tab Divider
+        View root = tabLayout.getChildAt(0);
+        if (root instanceof LinearLayout) {
+            ((LinearLayout) root).setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+            GradientDrawable drawable = new GradientDrawable();
+            drawable.setColor(getResources().getColor(R.color.black));
+            drawable.setSize(2, 1);
+            ((LinearLayout) root).setDividerPadding(10);
+            ((LinearLayout) root).setDividerDrawable(drawable);
+        }
+        //endregion
     }
 
     @Override
