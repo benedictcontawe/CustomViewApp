@@ -8,11 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ActionSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+    <style name="ActionSheetStyle" parent="Widget.Material3.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="ActionSheetTheme" parent="Theme.Design.Light.BottomSheetDialog">
+    <style name="ActionSheetTheme" parent="Theme.Material3.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/ActionSheetStyle</item>
     </style>
 
