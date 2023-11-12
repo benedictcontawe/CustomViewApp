@@ -100,14 +100,13 @@
                     app:layout_constraintGuide_percent="0.90" />
             <!--endregion-->
             <!--endregion-->
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/text"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
                     android:text="Cancel"
                     android:textAlignment="center"
-                    android:textColor="@color/black"
                     android:ellipsize="end"
                     android:maxLines="1"
                     app:autoSizeTextType="uniform"
