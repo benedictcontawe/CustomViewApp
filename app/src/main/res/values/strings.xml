@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Splash App</string>
+    <string name="hello_splash">Hello Splash!</string>
 </resources>
