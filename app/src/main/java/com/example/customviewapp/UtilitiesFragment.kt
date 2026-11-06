@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import com.example.customviewapp.databinding.UtilitiesBinder
+import java.util.Locale.getDefault
 
 class UtilitiesFragment : BaseFragment {
 
@@ -71,13 +72,17 @@ class UtilitiesFragment : BaseFragment {
             menu.findItem(R.id.on_off_menu).setEnabled(true);
             menu.findItem(R.id.off_menu).setEnabled(true);
             menu.findItem(R.id.on_menu).setEnabled(false);
-            menu.findItem(R.id.on_off_menu).setTitle(getResources().getString(R.string.on).toUpperCase());
+            menu.findItem(R.id.on_off_menu).setTitle(
+                getResources().getString(R.string.on).uppercase(getDefault())
+            );
 
         } else {
             menu.findItem(R.id.on_off_menu).setEnabled(false);
             menu.findItem(R.id.off_menu).setEnabled(false);
             menu.findItem(R.id.on_menu).setEnabled(true);
-            menu.findItem(R.id.on_off_menu).setTitle(getResources().getString(R.string.off).toUpperCase());
+            menu.findItem(R.id.on_off_menu).setTitle(
+                getResources().getString(R.string.off).uppercase(getDefault())
+            );
         }
         super.onPrepareOptionsMenu(menu);
     }

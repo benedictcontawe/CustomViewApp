@@ -25,6 +25,7 @@ class HomeFragment : BaseFragment {
     private var binder : HomeBinder? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "onCreate()")
         super.onCreate(savedInstanceState)
     }
 
@@ -35,6 +36,7 @@ class HomeFragment : BaseFragment {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         Log.d(TAG, "onCreateOptionsMenu()")
+        setTitle("Home Fragment")//setToolbarText("Home Fragment")
         setNavigationIcon(null)
         inflater.inflate(R.menu.home_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)

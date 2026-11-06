@@ -5,7 +5,6 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 
-
 class MainViewModel : AndroidViewModel {
 
     companion object {

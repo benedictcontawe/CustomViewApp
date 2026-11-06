@@ -58,7 +58,7 @@ public abstract class BaseFragment : Fragment() {
     }
 
     protected fun setNavigationOnClickListener(listener: View.OnClickListener?) {
-        mainActivity?.getToolbar()?.setNavigationOnClickListener(listener)
+        //mainActivity?.getToolbar()?.setNavigationOnClickListener(listener)
     }
 
     protected fun setTitle(title: String?) {
